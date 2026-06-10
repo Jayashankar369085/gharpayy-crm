@@ -209,6 +209,9 @@ export function AppShell({ children }: { children: ReactNode }) {
     owner: [
       { to: "/owner-portal", label: "My Portal", icon: ShieldCheck, accent: true, section: "Daily Run" },
       { to: "/owner", label: "Owner Desk", icon: ShieldCheck, accent: true, section: "Daily Run" },
+      { to: "/app/owner", label: "Hotel Inventory Desk", icon: Building2, accent: true, section: "Daily Run" },
+      { to: "/app/manager/bookos", label: "BookOS Manager", icon: LayoutDashboard, accent: true, section: "Daily Run" },
+      { to: "/app/refer", label: "Referral Program", icon: Sparkles, accent: true, section: "Daily Run" },
       { to: "/owner/rooms", label: "Update Rooms", icon: Boxes, accent: true, section: "Daily Run" },
       { to: "/owner/blocks", label: "Room Blocks", icon: Inbox, badge: ownerPendingBlocks, section: "Daily Run" },
       { to: "/owner/booking-approvals", label: "Booking Approvals", icon: ClipboardList, accent: true, section: "Daily Run" },
@@ -229,6 +232,11 @@ export function AppShell({ children }: { children: ReactNode }) {
       { to: "/admin/supreme", label: "Supreme · God Mode", icon: Sparkles, accent: true, section: "Daily Run" },
       { to: "/admin/command", label: "Command Bridge", icon: Command, accent: true, section: "Daily Run" },
       { to: "/admin/war-room", label: "War-Room TV", icon: Activity, accent: true, section: "Daily Run" },
+      { to: "/app/admin/dashboard", label: "Operator Console", icon: Command, accent: true, section: "Daily Run" },
+      { to: "/app/manager/bookos", label: "BookOS Manager", icon: LayoutDashboard, accent: true, section: "Lead Mgmt" },
+      { to: "/app/admin/zones", label: "Zone Atlas", icon: MapPin, accent: true, section: "Ops" },
+      { to: "/app/admin/payouts", label: "Payouts & Earners", icon: IndianRupee, accent: true, section: "Admin" },
+      { to: "/app/refer", label: "Referral Program", icon: Sparkles, accent: true, section: "Admin" },
 
       { to: "/admin/leads", label: "Master Leads", icon: Target, accent: true, section: "Lead Mgmt" },
       { to: "/admin/visits", label: "Master Visits", icon: Activity, accent: true, section: "Lead Mgmt" },

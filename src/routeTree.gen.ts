@@ -82,6 +82,7 @@ import { Route as MytDraftsRouteImport } from './routes/myt/drafts'
 import { Route as MytCalendarRouteImport } from './routes/myt/calendar'
 import { Route as MytBookingsRouteImport } from './routes/myt/bookings'
 import { Route as LeadsAddRouteImport } from './routes/leads.add'
+import { Route as AppSplatRouteImport } from './routes/app.$'
 import { Route as AdminWarRoomRouteImport } from './routes/admin.war-room'
 import { Route as AdminVisitsRouteImport } from './routes/admin.visits'
 import { Route as AdminSupremeRouteImport } from './routes/admin.supreme'
@@ -467,6 +468,11 @@ const LeadsAddRoute = LeadsAddRouteImport.update({
   path: '/add',
   getParentRoute: () => LeadsRoute,
 } as any)
+const AppSplatRoute = AppSplatRouteImport.update({
+  id: '/app/$',
+  path: '/app/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminWarRoomRoute = AdminWarRoomRouteImport.update({
   id: '/war-room',
   path: '/war-room',
@@ -614,6 +620,7 @@ export interface FileRoutesByFullPath {
   '/admin/supreme': typeof AdminSupremeRoute
   '/admin/visits': typeof AdminVisitsRoute
   '/admin/war-room': typeof AdminWarRoomRoute
+  '/app/$': typeof AppSplatRoute
   '/leads/add': typeof LeadsAddRoute
   '/myt/bookings': typeof MytBookingsRoute
   '/myt/calendar': typeof MytCalendarRoute
@@ -707,6 +714,7 @@ export interface FileRoutesByTo {
   '/admin/supreme': typeof AdminSupremeRoute
   '/admin/visits': typeof AdminVisitsRoute
   '/admin/war-room': typeof AdminWarRoomRoute
+  '/app/$': typeof AppSplatRoute
   '/leads/add': typeof LeadsAddRoute
   '/myt/bookings': typeof MytBookingsRoute
   '/myt/calendar': typeof MytCalendarRoute
@@ -802,6 +810,7 @@ export interface FileRoutesById {
   '/admin/supreme': typeof AdminSupremeRoute
   '/admin/visits': typeof AdminVisitsRoute
   '/admin/war-room': typeof AdminWarRoomRoute
+  '/app/$': typeof AppSplatRoute
   '/leads/add': typeof LeadsAddRoute
   '/myt/bookings': typeof MytBookingsRoute
   '/myt/calendar': typeof MytCalendarRoute
@@ -898,6 +907,7 @@ export interface FileRouteTypes {
     | '/admin/supreme'
     | '/admin/visits'
     | '/admin/war-room'
+    | '/app/$'
     | '/leads/add'
     | '/myt/bookings'
     | '/myt/calendar'
@@ -991,6 +1001,7 @@ export interface FileRouteTypes {
     | '/admin/supreme'
     | '/admin/visits'
     | '/admin/war-room'
+    | '/app/$'
     | '/leads/add'
     | '/myt/bookings'
     | '/myt/calendar'
@@ -1085,6 +1096,7 @@ export interface FileRouteTypes {
     | '/admin/supreme'
     | '/admin/visits'
     | '/admin/war-room'
+    | '/app/$'
     | '/leads/add'
     | '/myt/bookings'
     | '/myt/calendar'
@@ -1167,6 +1179,7 @@ export interface RootRouteChildren {
   VisitWarRoute: typeof VisitWarRoute
   WarRoomRoute: typeof WarRoomRoute
   ZoneBrainRoute: typeof ZoneBrainRoute
+  AppSplatRoute: typeof AppSplatRoute
   MytBookingsRoute: typeof MytBookingsRoute
   MytCalendarRoute: typeof MytCalendarRoute
   MytDraftsRoute: typeof MytDraftsRoute
@@ -1719,6 +1732,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LeadsAddRouteImport
       parentRoute: typeof LeadsRoute
     }
+    '/app/$': {
+      id: '/app/$'
+      path: '/app/$'
+      fullPath: '/app/$'
+      preLoaderRoute: typeof AppSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/war-room': {
       id: '/admin/war-room'
       path: '/war-room'
@@ -1964,6 +1984,7 @@ const rootRouteChildren: RootRouteChildren = {
   VisitWarRoute: VisitWarRoute,
   WarRoomRoute: WarRoomRoute,
   ZoneBrainRoute: ZoneBrainRoute,
+  AppSplatRoute: AppSplatRoute,
   MytBookingsRoute: MytBookingsRoute,
   MytCalendarRoute: MytCalendarRoute,
   MytDraftsRoute: MytDraftsRoute,
@@ -2005,12 +2026,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
