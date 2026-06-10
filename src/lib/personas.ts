@@ -14,6 +14,13 @@ export interface Persona {
   id: string;
   name: string;
   role: Role;
+  title?: string;
+  emoji?: string;
+  short?: string;
+  bestAreas?: string[];
+  budget?: [number, number];
+  whatsappOpener?: string;
+  storyQuote?: string;
   /** zone or domain focus shown in HR dashboards */
   focus: string;
   /** how Coach should talk to this person */
@@ -240,7 +247,22 @@ const OWNERS: Persona[] = [
   },
 ];
 
-export const PERSONAS: Persona[] = [...HR, ...FLOW_OPS, ...TCMS, ...OWNERS];
+function withReferralPersonaFields(p: Persona): Persona {
+  const area = p.focus.split("·")[0]?.trim() || "Bengaluru";
+  const emoji = p.role === "owner" ? "🔑" : p.role === "tcm" ? "🏠" : p.role === "hr" ? "🧭" : "⚡";
+  return {
+    ...p,
+    title: p.title ?? p.focus,
+    emoji: p.emoji ?? emoji,
+    short: p.short ?? `${p.name} knows ${p.focus.toLowerCase()} and can route a renter to the right Gharpayy expert.`,
+    bestAreas: p.bestAreas ?? [area, "HSR Layout", "Koramangala", "Indiranagar", "Whitefield"],
+    budget: p.budget ?? [9000, 24000],
+    whatsappOpener: p.whatsappOpener ?? `Hey, Gharpayy has verified rooms around ${area}. Share your budget and move-in date — I'll route you to the right expert.`,
+    storyQuote: p.storyQuote ?? p.signature,
+  };
+}
+
+export const PERSONAS: Persona[] = [...HR, ...FLOW_OPS, ...TCMS, ...OWNERS].map(withReferralPersonaFields);
 
 export const PERSONA_BY_ID: Record<string, Persona> =
   Object.fromEntries(PERSONAS.map((p) => [p.id, p]));
