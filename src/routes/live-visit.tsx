@@ -26,6 +26,7 @@ import {
   SECONDARY_COLUMNS,
   type BoardColumn,
   type LiveVisit,
+  fmtDur,
 } from "@/lib/visits/live-types";
 import {
   groupByColumn,
