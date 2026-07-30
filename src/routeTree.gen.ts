@@ -24,6 +24,7 @@ import { Route as OwnerPortalRouteImport } from './routes/owner-portal'
 import { Route as OwnerBookingsRouteImport } from './routes/owner-bookings'
 import { Route as OwnerAccountsRouteImport } from './routes/owner-accounts'
 import { Route as ManagerRouteImport } from './routes/manager'
+import { Route as LiveVisitRouteImport } from './routes/live-visit'
 import { Route as LeadsRouteImport } from './routes/leads'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as InventoryTruthRouteImport } from './routes/inventory-truth'
@@ -176,6 +177,11 @@ const OwnerAccountsRoute = OwnerAccountsRouteImport.update({
 const ManagerRoute = ManagerRouteImport.update({
   id: '/manager',
   path: '/manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiveVisitRoute = LiveVisitRouteImport.update({
+  id: '/live-visit',
+  path: '/live-visit',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LeadsRoute = LeadsRouteImport.update({
@@ -592,6 +598,7 @@ export interface FileRoutesByFullPath {
   '/inventory-truth': typeof InventoryTruthRoute
   '/leaderboard': typeof LeaderboardRoute
   '/leads': typeof LeadsRouteWithChildren
+  '/live-visit': typeof LiveVisitRoute
   '/manager': typeof ManagerRoute
   '/owner-accounts': typeof OwnerAccountsRoute
   '/owner-bookings': typeof OwnerBookingsRoute
@@ -686,6 +693,7 @@ export interface FileRoutesByTo {
   '/inventory-truth': typeof InventoryTruthRoute
   '/leaderboard': typeof LeaderboardRoute
   '/leads': typeof LeadsRouteWithChildren
+  '/live-visit': typeof LiveVisitRoute
   '/manager': typeof ManagerRoute
   '/owner-accounts': typeof OwnerAccountsRoute
   '/owner-bookings': typeof OwnerBookingsRoute
@@ -782,6 +790,7 @@ export interface FileRoutesById {
   '/inventory-truth': typeof InventoryTruthRoute
   '/leaderboard': typeof LeaderboardRoute
   '/leads': typeof LeadsRouteWithChildren
+  '/live-visit': typeof LiveVisitRoute
   '/manager': typeof ManagerRoute
   '/owner-accounts': typeof OwnerAccountsRoute
   '/owner-bookings': typeof OwnerBookingsRoute
@@ -879,6 +888,7 @@ export interface FileRouteTypes {
     | '/inventory-truth'
     | '/leaderboard'
     | '/leads'
+    | '/live-visit'
     | '/manager'
     | '/owner-accounts'
     | '/owner-bookings'
@@ -973,6 +983,7 @@ export interface FileRouteTypes {
     | '/inventory-truth'
     | '/leaderboard'
     | '/leads'
+    | '/live-visit'
     | '/manager'
     | '/owner-accounts'
     | '/owner-bookings'
@@ -1068,6 +1079,7 @@ export interface FileRouteTypes {
     | '/inventory-truth'
     | '/leaderboard'
     | '/leads'
+    | '/live-visit'
     | '/manager'
     | '/owner-accounts'
     | '/owner-bookings'
@@ -1164,6 +1176,7 @@ export interface RootRouteChildren {
   InventoryTruthRoute: typeof InventoryTruthRoute
   LeaderboardRoute: typeof LeaderboardRoute
   LeadsRoute: typeof LeadsRouteWithChildren
+  LiveVisitRoute: typeof LiveVisitRoute
   ManagerRoute: typeof ManagerRoute
   OwnerAccountsRoute: typeof OwnerAccountsRoute
   OwnerBookingsRoute: typeof OwnerBookingsRoute
@@ -1324,6 +1337,13 @@ declare module '@tanstack/react-router' {
       path: '/manager'
       fullPath: '/manager'
       preLoaderRoute: typeof ManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/live-visit': {
+      id: '/live-visit'
+      path: '/live-visit'
+      fullPath: '/live-visit'
+      preLoaderRoute: typeof LiveVisitRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/leads': {
@@ -1969,6 +1989,7 @@ const rootRouteChildren: RootRouteChildren = {
   InventoryTruthRoute: InventoryTruthRoute,
   LeaderboardRoute: LeaderboardRoute,
   LeadsRoute: LeadsRouteWithChildren,
+  LiveVisitRoute: LiveVisitRoute,
   ManagerRoute: ManagerRoute,
   OwnerAccountsRoute: OwnerAccountsRoute,
   OwnerBookingsRoute: OwnerBookingsRoute,
