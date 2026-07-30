@@ -368,3 +368,39 @@ function ScheduleVisitDialog({ onScheduled }: { onScheduled: () => void }) {
     </Dialog>
   );
 }
+
+/* ── Live tour strip: which visits are physically happening right now ── */
+function LiveTourStrip({
+  visits,
+  now,
+  onOpen,
+}: {
+  visits: LiveVisit[];
+  now: number;
+  onOpen: (id: string) => void;
+}) {
+  const live = visits.filter((v) => v.tourStartedAt && !v.completedAt && v.stage !== "booked" && v.stage !== "lost");
+  if (live.length === 0) return null;
+  return (
+    <div className="rounded-xl border border-success/40 bg-success/10 p-3">
+      <div className="flex items-center gap-2 mb-2">
+        <Radio className="h-4 w-4 text-success animate-pulse" />
+        <span className="text-xs font-semibold">{live.length} visit{live.length > 1 ? "s" : ""} happening right now</span>
+        <span className="text-[10px] text-muted-foreground ml-auto">Timers broadcast live to admin &amp; owner feeds</span>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        {live.map((v) => (
+          <button
+            key={v.id}
+            onClick={() => onOpen(v.id)}
+            className="flex items-center gap-2 rounded-lg border bg-card px-2.5 py-1.5 text-xs hover:border-success"
+          >
+            <span className="font-semibold">{v.customer}</span>
+            <span className="text-muted-foreground truncate max-w-32">{v.propertyName}</span>
+            <span className="font-mono tabular-nums text-success">{fmtDur(now - (v.tourStartedAt ?? now))}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
