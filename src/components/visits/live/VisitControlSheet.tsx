@@ -44,6 +44,7 @@ import {
   TIER_LABEL,
 } from "@/lib/visits/live-engine";
 import { useLiveVisits } from "@/lib/visits/live-store";
+import { NextStepFlow } from "./NextStepFlow";
 
 const REACTION_TAGS = Object.keys(REACTION_META) as ReactionTag[];
 
