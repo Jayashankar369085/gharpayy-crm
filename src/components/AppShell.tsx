@@ -109,6 +109,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       { to: "/impact", label: "Impact Queue", icon: Rocket, accent: true, section: "Daily Run" },
       { to: "/execution", label: "Execution", icon: Zap, accent: true, section: "Daily Run" },
       { to: "/visit-war", label: "Visit War Room", icon: Activity, accent: true, section: "Daily Run" },
+      { to: "/live-visit", label: "Live Visit War Room", icon: Radio, accent: true, section: "Daily Run" },
       { to: "/atc", label: "ATC War Room", icon: AlertTriangle, accent: true, section: "Daily Run" },
       { to: "/calendar", label: "Calendar", icon: Calendar, section: "Daily Run" },
       { to: "/coach", label: "Coach", icon: Sparkles, accent: true, section: "Daily Run" },
@@ -147,6 +148,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       { to: "/impact", label: "Impact Queue", icon: Rocket, accent: true, section: "Daily Run" },
       { to: "/execution", label: "Execution", icon: Zap, accent: true, section: "Daily Run" },
       { to: "/visit-war", label: "Visit War Room", icon: Activity, accent: true, section: "Daily Run" },
+      { to: "/live-visit", label: "Live Visit War Room", icon: Radio, accent: true, section: "Daily Run" },
       { to: "/calendar", label: "Calendar", icon: Calendar, section: "Daily Run" },
       { to: "/coach", label: "Coach", icon: Sparkles, accent: true, section: "Daily Run" },
 
@@ -179,6 +181,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       { to: "/impact", label: "Impact Queue", icon: Rocket, accent: true, section: "Daily Run" },
       { to: "/execution", label: "Execution", icon: Zap, accent: true, section: "Daily Run" },
       { to: "/visit-war", label: "Visit War Room", icon: Activity, accent: true, section: "Daily Run" },
+      { to: "/live-visit", label: "Live Visit War Room", icon: Radio, accent: true, section: "Daily Run" },
       { to: "/calendar", label: "Calendar", icon: Calendar, section: "Daily Run" },
       { to: "/coach", label: "Coach", icon: Sparkles, accent: true, section: "Daily Run" },
 
