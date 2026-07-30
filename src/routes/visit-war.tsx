@@ -21,7 +21,7 @@ import {
   Radio, Activity, Flame, BarChart3, Bell, X, Phone, MessageCircle,
   AlertTriangle, Building2, Clock, TrendingUp,
   CalendarClock, Wallet, Gauge, Siren, ChevronRight, Plus,
-  Users, Map,
+  Users, Map, FileText,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -36,6 +36,9 @@ import { TeamPulseGrid } from "@/components/visits/TeamPulseGrid";
 import { WarMapPanel } from "@/components/visits/WarMapPanel";
 import { VisitCopyChips } from "@/components/visits/VisitCopyChips";
 import { CoachNoteThread } from "@/components/visits/CoachNoteThread";
+import { WalkInDialog } from "@/components/visits/WalkInDialog";
+import { DayReportPanel } from "@/components/visits/DayReportPanel";
+import { buildVisitReport, isClosedOut, reportSignature } from "@/lib/visits/report";
 import { selectByLens, defaultLensFor, type Lens } from "@/lib/visits/selectors";
 import { upsertVisitEvent, archiveVisitEvent } from "@/lib/calendar-store";
 import { visitBlock } from "@/lib/impact/copy-formats";
@@ -82,11 +85,11 @@ function timerTone(elapsedSec: number) {
 
 /* ────────────────────────────────────────────────────────────────────────── */
 
-type Tab = "live" | "upcoming" | "hot" | "team" | "map" | "stats" | "alerts";
+type Tab = "live" | "upcoming" | "hot" | "team" | "map" | "reports" | "stats" | "alerts";
 
 export function VisitWarRoom({ inline = false }: { inline?: boolean } = {}) {
   const { leads, properties, tours, tcms, role, currentTcmId } = useApp();
-  const { records, alerts, upsert, patch, pushAlert, markAlertsSeen, addObjection, alertsSeenAt } = useVisitWar();
+  const { records, alerts, upsert, patch, pushAlert, markAlertsSeen, addObjection, alertsSeenAt, setReport } = useVisitWar();
   const [now, mounted] = useMountedNow(1000);
   const [lens, setLens] = useState<Lens>(() => defaultLensFor(role));
   const [tab, setTab] = useState<Tab>("live");
@@ -155,6 +158,19 @@ export function VisitWarRoom({ inline = false }: { inline?: boolean } = {}) {
       }
     });
   }, [now, records, patch, pushAlert, mounted]);
+
+  /* Auto visit report — regenerates whenever a visit's close-out data changes. */
+  useEffect(() => {
+    if (!mounted) return;
+    Object.values(records).forEach((v) => {
+      if (!isClosedOut(v)) return;
+      const sig = reportSignature(v);
+      const stale = !v.report || v.report.generatedAt < v.lastUpdateAt;
+      if (!stale) return;
+      const text = `${buildVisitReport(v)}\n\n[sig:${sig}]`;
+      setReport(v.tourId, text);
+    });
+  }, [records, mounted, setReport]);
 
   /* Calendar mirror — every visit gets a 1:1 calendar event, idempotent. */
   useEffect(() => {
@@ -266,6 +282,7 @@ export function VisitWarRoom({ inline = false }: { inline?: boolean } = {}) {
             </Badge>
           )}
           <div className="ml-auto flex items-center gap-3">
+            <WalkInDialog onCreated={(id) => { setFocusTour(id); setTab("live"); }} />
             <RoleLensSwitcher value={lens} onChange={setLens} />
             <div className="text-sm tabular-nums font-mono text-muted-foreground">
               {mounted ? new Date(now).toLocaleTimeString("en-IN", { hour12: false }) : "--:--:--"}
@@ -281,6 +298,12 @@ export function VisitWarRoom({ inline = false }: { inline?: boolean } = {}) {
           <Metric icon={TrendingUp} label="Expected bookings" value={expectedBookings} tone="accent" />
         </div>
       </Card>
+      )}
+
+      {inline && (
+        <div className="flex justify-end">
+          <WalkInDialog onCreated={(id) => { setFocusTour(id); setTab("live"); }} />
+        </div>
       )}
 
       {/* ── DAY PLANNER STRIP ───────────────────────────────────────────── */}
@@ -300,6 +323,7 @@ export function VisitWarRoom({ inline = false }: { inline?: boolean } = {}) {
             <TabsTrigger value="hot" className="gap-1.5"><Flame className="h-3.5 w-3.5" /> Hot ({hot.length})</TabsTrigger>
             <TabsTrigger value="team" className="gap-1.5"><Users className="h-3.5 w-3.5" /> Team Pulse</TabsTrigger>
             <TabsTrigger value="map" className="gap-1.5"><Map className="h-3.5 w-3.5" /> War Map</TabsTrigger>
+            <TabsTrigger value="reports" className="gap-1.5"><FileText className="h-3.5 w-3.5" /> Reports</TabsTrigger>
             <TabsTrigger value="stats" className="gap-1.5"><BarChart3 className="h-3.5 w-3.5" /> Stats</TabsTrigger>
             <TabsTrigger value="alerts" onClick={() => markAlertsSeen()} className="gap-1.5">
               <Bell className="h-3.5 w-3.5" /> Alerts
@@ -336,6 +360,9 @@ export function VisitWarRoom({ inline = false }: { inline?: boolean } = {}) {
             </TabsContent>
             <TabsContent value="map" className="m-0">
               <WarMapPanel now={now} />
+            </TabsContent>
+            <TabsContent value="reports" className="m-0">
+              <DayReportPanel visits={Object.values(records)} dayStart={todayMs} />
             </TabsContent>
             <TabsContent value="stats" className="m-0">
               <WarRoomStats list={list} />
