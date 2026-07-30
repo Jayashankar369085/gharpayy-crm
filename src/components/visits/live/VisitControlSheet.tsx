@@ -44,6 +44,7 @@ import {
   TIER_LABEL,
 } from "@/lib/visits/live-engine";
 import { useLiveVisits } from "@/lib/visits/live-store";
+import { NextStepFlow } from "./NextStepFlow";
 
 const REACTION_TAGS = Object.keys(REACTION_META) as ReactionTag[];
 
@@ -98,8 +99,9 @@ export function VisitControlSheet({
           </Button>
         </div>
 
-        <Tabs defaultValue="live" className="w-full">
-          <TabsList className="grid grid-cols-6 h-8">
+        <Tabs defaultValue="flow" className="w-full">
+          <TabsList className="grid grid-cols-7 h-8">
+            <TabsTrigger value="flow" className="text-[11px]">Flow</TabsTrigger>
             <TabsTrigger value="live" className="text-[11px]">Live</TabsTrigger>
             <TabsTrigger value="timeline" className="text-[11px]">T-60</TabsTrigger>
             <TabsTrigger value="tour" className="text-[11px]">Tour</TabsTrigger>
@@ -108,7 +110,13 @@ export function VisitControlSheet({
             <TabsTrigger value="log" className="text-[11px]">Log</TabsTrigger>
           </TabsList>
 
+          {/* ─────────── GUIDED FLOW ─────────── */}
+          <TabsContent value="flow" className="pt-3">
+            <NextStepFlow visit={v} now={now} alternatives={alternatives} />
+          </TabsContent>
+
           {/* ─────────── LIVE ─────────── */}
+
           <TabsContent value="live" className="space-y-4 pt-3">
             <Section title="Confirmation & movement">
               <div className="grid grid-cols-2 gap-2">
