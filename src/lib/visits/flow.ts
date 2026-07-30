@@ -144,9 +144,9 @@ export const FLOW_STEPS: FlowStep[] = [
       return (
         `Quotation — ${v.propertyName} (Room ${v.roomNo || "TBD"}${v.bedNo ? `/${v.bedNo}` : ""})\n` +
         `Rent: ${inr(q.rent)}/mo\nDeposit: ${inr(q.deposit)}\n` +
-        (q.discount ? `Discount: ${inr(q.discount)}\n` : "") +
-        `Token to block the bed: ${inr(q.tokenAmount)}\nMove-in: ${v.checkInDate}\n` +
-        `Valid till ${new Date(q.validTill ?? Date.now() + 864e5).toLocaleDateString("en-IN")}. Shall I block it?`
+        `Maintenance: ${inr(q.maintenance)} · Gharpayy fee: ${inr(q.gharpayyFee)}\n` +
+        `Token to block the bed: ${inr(q.tokenAmount)}\nMove-in: ${q.checkInDate || v.checkInDate}\n` +
+        `Valid till ${new Date(q.expiresAt).toLocaleString("en-IN")}. Shall I block it?`
       );
     },
   },
