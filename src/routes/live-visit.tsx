@@ -168,6 +168,8 @@ function LiveVisitWarRoom() {
         </div>
       </header>
 
+      <LiveTourStrip visits={filtered} now={now} onOpen={setOpenId} />
+
       <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-7 gap-2">
         <Kpi label="Active visits" value={filtered.filter((v) => !["booked", "lost"].includes(v.stage)).length} />
         <Kpi label="Close now" value={closeNow.length} tone="success" />
