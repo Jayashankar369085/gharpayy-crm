@@ -94,36 +94,61 @@ export function DayPlannerStrip({
         )}
 
         <div className="space-y-1">
-          {Array.from(lanes.entries()).map(([tcmId, lane]) => (
-            <div key={tcmId} className="relative h-7 rounded bg-muted/30">
-              <div className="absolute inset-y-0 left-1 flex items-center text-[10px] font-semibold text-muted-foreground truncate z-[5] pointer-events-none">
-                {lane.tcmName.split(" ")[0]}
+          {Array.from(lanes.entries()).map(([tcmId, lane]) => {
+            const active = lane.visits.find((v) =>
+              ["started", "at-property", "tour-ongoing"].includes(v.stage));
+            const next = lane.visits
+              .filter((v) => v.stage === "scheduled" && v.scheduledAt >= now)
+              .sort((a, b) => a.scheduledAt - b.scheduledAt)[0];
+            const doing = active
+              ? `${active.stage === "started" ? "On the way to" : active.stage === "at-property" ? "At" : "Touring"} ${active.propertyName} · ${active.leadName}`
+              : next
+                ? `Free · next ${next.leadName} at ${new Date(next.scheduledAt).toLocaleTimeString("en-IN", { hour: "numeric", minute: "2-digit" })}`
+                : "Day complete";
+            return (
+            <div key={tcmId}>
+              <div className="flex items-center gap-2 px-1">
+                <span className="text-[10px] font-bold">{lane.tcmName.split(" ")[0]}</span>
+                <span className={cn(
+                  "text-[9px] truncate",
+                  active ? "text-success" : "text-muted-foreground",
+                )}>
+                  {doing}
+                </span>
+                <span className="ml-auto text-[9px] text-muted-foreground font-mono">
+                  {lane.visits.length} visits
+                </span>
               </div>
-              {lane.visits.map((v) => {
-                const startH = (v.scheduledAt - today) / 3600_000;
-                const left = ((startH - minH) / span) * 100;
-                const width = (1 / span) * 100; // 1h block
-                const focused = focusTourId === v.tourId;
-                return (
-                  <button
-                    key={v.tourId}
-                    onClick={() => onFocus(v.tourId)}
-                    className={cn(
-                      "absolute top-0.5 bottom-0.5 rounded text-[9px] font-semibold text-white px-1 truncate transition",
-                      STAGE_BG[v.stage],
-                      focused && "ring-2 ring-accent",
-                      v.escalated && "ring-2 ring-destructive animate-pulse",
-                    )}
-                    style={{ left: `${Math.max(0, left)}%`, width: `${Math.max(2, width)}%` }}
-                    title={`${v.leadName} · ${v.propertyName} · ${new Date(v.scheduledAt).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" })}`}
-                  >
-                    {v.propertyName.split(" ")[0]}
-                  </button>
-                );
-              })}
+              <div className="relative h-7 rounded bg-muted/30">
+                {lane.visits.map((v) => {
+                  const startH = (v.scheduledAt - today) / 3600_000;
+                  const left = ((startH - minH) / span) * 100;
+                  const width = (1 / span) * 100; // 1h block
+                  const focused = focusTourId === v.tourId;
+                  return (
+                    <button
+                      key={v.tourId}
+                      onClick={() => onFocus(v.tourId)}
+                      className={cn(
+                        "absolute top-0.5 bottom-0.5 rounded text-[9px] font-semibold text-white px-1 truncate transition",
+                        STAGE_BG[v.stage],
+                        v.walkIn && "outline outline-1 outline-dashed outline-accent",
+                        focused && "ring-2 ring-accent",
+                        v.escalated && "ring-2 ring-destructive animate-pulse",
+                      )}
+                      style={{ left: `${Math.max(0, left)}%`, width: `${Math.max(2, width)}%` }}
+                      title={`${v.leadName} · ${v.propertyName} · ${new Date(v.scheduledAt).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" })}${v.walkIn ? " · walk-in" : ""}`}
+                    >
+                      {v.walkIn ? "⚡ " : ""}{v.propertyName.split(" ")[0]}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-          ))}
+            );
+          })}
         </div>
+
       </div>
 
       <div className="mt-2 flex items-center gap-2 flex-wrap text-[9px] text-muted-foreground">

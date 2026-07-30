@@ -113,6 +113,31 @@ export interface VisitRecord {
   interventionFlag?: { by: string; ts: number; note: string };
   /** Manager / HR coach notes — visible in detail panel */
   coachNotes?: Array<{ id: string; by: string; ts: number; note: string }>;
+  /** created on-site as a walk-in (no prior tour) */
+  walkIn?: boolean;
+  /** optional intake captured at walk-in time */
+  occupancy?: "single" | "double" | "triple";
+  budget?: number;
+  source?: string;
+  moveInBy?: string;
+  /** auto-generated visit report (regenerated on every close-out change) */
+  report?: { text: string; generatedAt: number };
+}
+
+export interface WalkInInput {
+  leadName: string;
+  leadPhone: string;
+  propertyId: string;
+  propertyName: string;
+  propertyArea: string;
+  tcmId: string;
+  tcmName: string;
+  occupancy?: "single" | "double" | "triple";
+  budget?: number;
+  source?: string;
+  moveInBy?: string;
+  /** "now" starts the tour immediately, otherwise minutes from now */
+  startInMin?: number;
 }
 
 interface State {
@@ -130,6 +155,8 @@ interface Actions {
   addCoachNote: (tourId: string, by: string, note: string) => void;
   flagIntervention: (tourId: string, by: string, note: string) => void;
   clearIntervention: (tourId: string) => void;
+  addWalkIn: (input: WalkInInput) => VisitRecord;
+  setReport: (tourId: string, text: string) => void;
   resetDemo: () => void;
 }
 
@@ -231,6 +258,68 @@ export const useVisitWar = create<State & Actions>()(
           if (!cur) return s;
           return { records: { ...s.records, [tourId]: { ...cur, interventionFlag: undefined } } };
         }),
+
+      addWalkIn: (input) => {
+        const now = Date.now();
+        const tourId = `walkin-${now}-${Math.random().toString(36).slice(2, 6)}`;
+        const startInMin = input.startInMin ?? 0;
+        const scheduledAt = now + startInMin * 60_000;
+        const immediate = startInMin <= 0;
+        const rec: VisitRecord = {
+          tourId,
+          leadId: `wl-${now}`,
+          leadName: input.leadName,
+          leadPhone: input.leadPhone,
+          propertyId: input.propertyId,
+          propertyName: input.propertyName,
+          propertyArea: input.propertyArea,
+          tcmId: input.tcmId,
+          tcmName: input.tcmName,
+          scheduledAt,
+          stage: immediate ? "at-property" : "scheduled",
+          startedAt: immediate ? now : undefined,
+          reachedAt: immediate ? now : undefined,
+          objections: [],
+          outcome: null,
+          lastUpdateAt: now,
+          walkIn: true,
+          occupancy: input.occupancy,
+          budget: input.budget,
+          source: input.source ?? "Walk-in",
+          moveInBy: input.moveInBy,
+        };
+        set((s) => ({
+          records: { ...s.records, [tourId]: rec },
+          alerts: [
+            {
+              id: `al-${now}-${Math.random().toString(36).slice(2, 7)}`,
+              ts: now,
+              tourId,
+              leadName: input.leadName,
+              severity: "info" as const,
+              kind: "started" as const,
+              message: immediate
+                ? `Walk-in added · ${input.leadName} at ${input.propertyName} — tour live now`
+                : `Walk-in booked · ${input.leadName} at ${input.propertyName} in ${startInMin}m`,
+            },
+            ...s.alerts,
+          ].slice(0, 200),
+        }));
+        return rec;
+      },
+
+      setReport: (tourId, text) =>
+        set((s) => {
+          const cur = s.records[tourId];
+          if (!cur) return s;
+          return {
+            records: {
+              ...s.records,
+              [tourId]: { ...cur, report: { text, generatedAt: Date.now() } },
+            },
+          };
+        }),
+
 
       resetDemo: () => set({ records: {}, alerts: [], alertsSeenAt: 0 }),
     }),
