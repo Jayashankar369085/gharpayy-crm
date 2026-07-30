@@ -26,11 +26,23 @@ function ToursPage() {
   return (
     <AppShell>
       <div className="space-y-6">
-        <header>
-          <h1 className="font-display text-2xl font-semibold tracking-tight">Tours</h1>
-          <p className="text-sm text-muted-foreground">
-            {upcoming.length} upcoming · {completed.length} completed · <span className="text-destructive font-medium">{incomplete.length} pending post-tour</span>
-          </p>
+        <header className="flex flex-wrap items-start gap-3">
+          <div>
+            <h1 className="font-display text-2xl font-semibold tracking-tight">Tours</h1>
+            <p className="text-sm text-muted-foreground">
+              {upcoming.length} upcoming · {completed.length} completed · <span className="text-destructive font-medium">{incomplete.length} pending post-tour</span>
+            </p>
+          </div>
+          <Link
+            to="/live-visit"
+            className="ml-auto inline-flex items-center gap-1.5 rounded-lg border border-success/40 bg-success/10 px-3 py-1.5 text-xs font-medium text-success hover:bg-success/15"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute h-full w-full rounded-full bg-success/60" />
+              <span className="relative h-2 w-2 rounded-full bg-success" />
+            </span>
+            Open Live Visit War Room
+          </Link>
         </header>
 
         {incomplete.length > 0 && (
