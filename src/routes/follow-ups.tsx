@@ -4,10 +4,11 @@ import { useApp } from "@/lib/store";
 import { Button } from "@/components/ui/button";
 import { ConfidenceBar, IntentChip } from "@/components/atoms";
 import { format, formatDistanceToNow, isPast, isToday } from "date-fns";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Loader2, AlertCircle } from "lucide-react";
 import { toast } from "sonner";
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useMountedNow } from "@/hooks/use-now";
+import * as apiClient from "@/lib/crm-api-client";
 
 export const Route = createFileRoute("/follow-ups")({
   head: () => ({
@@ -17,20 +18,91 @@ export const Route = createFileRoute("/follow-ups")({
 });
 
 function FollowUpsPage() {
-  const { followUps, leads, completeFollowUp, selectLead } = useApp();
+  const { followUps, leads, selectLead } = useApp();
   const [, mounted] = useMountedNow();
+  const [followUpsData, setFollowUpsData] = useState<typeof followUps>(followUps);
+  const [leadsData, setLeadsData] = useState<typeof leads>(leads);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [completingId, setCompletingId] = useState<string | null>(null);
+
+  // Load data from API on mount
+  useEffect(() => {
+    loadDataFromAPI();
+  }, []);
+
+  const loadDataFromAPI = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const [fus, leads_] = await Promise.all([
+        apiClient.getFollowUps(),
+        apiClient.getLeads()
+      ]);
+      setFollowUpsData(fus);
+      setLeadsData(leads_);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to load data';
+      setError(message);
+      toast.error('Failed to load follow-ups: ' + message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCompleteFollowUp = async (followUpId: string) => {
+    setCompletingId(followUpId);
+    try {
+      await apiClient.completeFollowUp(followUpId);
+      // Remove from local state
+      setFollowUpsData(prev => prev.filter(f => f.id !== followUpId));
+      toast.success("Follow-up marked done");
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to complete follow-up';
+      toast.error('Error: ' + message);
+    } finally {
+      setCompletingId(null);
+    }
+  };
 
   const enriched = useMemo(() => {
-    return followUps
+    return followUpsData
       .filter((f) => !f.done)
-      .map((f) => ({ f, lead: leads.find((l) => l.id === f.leadId) }))
+      .map((f) => ({ f, lead: leadsData.find((l) => l.id === f.leadId) }))
       .filter((x) => x.lead);
-  }, [followUps, leads]);
+  }, [followUpsData, leadsData]);
 
   const overdue = enriched.filter((x) => isPast(new Date(x.f.dueAt)) && !isToday(new Date(x.f.dueAt)));
   const today = enriched.filter((x) => isToday(new Date(x.f.dueAt)));
   const upcoming = enriched.filter((x) => !isPast(new Date(x.f.dueAt)) && !isToday(new Date(x.f.dueAt)));
   const hot = enriched.filter((x) => x.lead!.intent === "hot");
+
+  if (loading) {
+    return (
+      <AppShell>
+        <div className="rounded-xl border border-border bg-card p-12 text-center">
+          <Loader2 className="h-6 w-6 animate-spin mx-auto text-muted-foreground mb-2" />
+          <p className="text-sm text-muted-foreground">Loading follow-ups from API...</p>
+        </div>
+      </AppShell>
+    );
+  }
+
+  if (error) {
+    return (
+      <AppShell>
+        <div className="rounded-xl border border-destructive/50 bg-destructive/5 p-4">
+          <div className="flex items-center gap-2 text-destructive mb-3">
+            <AlertCircle className="h-4 w-4" />
+            <span>{error}</span>
+          </div>
+          <Button onClick={loadDataFromAPI} variant="outline" size="sm">
+            Retry
+          </Button>
+        </div>
+      </AppShell>
+    );
+  }
 
   return (
     <AppShell>
@@ -45,20 +117,23 @@ function FollowUpsPage() {
         <Bucket
           title="Overdue" tone="destructive" items={overdue}
           mounted={mounted}
-          onDone={(id) => { completeFollowUp(id); toast.success("Follow-up marked done"); }}
+          onDone={(id) => handleCompleteFollowUp(id)}
           onOpen={selectLead}
+          completing={completingId}
         />
         <Bucket
           title="Today" tone="accent" items={today}
           mounted={mounted}
-          onDone={(id) => { completeFollowUp(id); toast.success("Follow-up marked done"); }}
+          onDone={(id) => handleCompleteFollowUp(id)}
           onOpen={selectLead}
+          completing={completingId}
         />
         <Bucket
           title="Upcoming" items={upcoming}
           mounted={mounted}
-          onDone={(id) => { completeFollowUp(id); toast.success("Follow-up marked done"); }}
+          onDone={(id) => handleCompleteFollowUp(id)}
           onOpen={selectLead}
+          completing={completingId}
         />
       </div>
     </AppShell>
@@ -66,7 +141,7 @@ function FollowUpsPage() {
 }
 
 function Bucket({
-  title, items, tone = "default", mounted, onDone, onOpen,
+  title, items, tone = "default", mounted, onDone, onOpen, completing,
 }: {
   title: string;
   items: { f: import("@/lib/types").FollowUp; lead?: import("@/lib/types").Lead }[];
@@ -74,6 +149,7 @@ function Bucket({
   mounted: boolean;
   onDone: (id: string) => void;
   onOpen: (id: string) => void;
+  completing?: string | null;
 }) {
   const toneCls = {
     default: "border-border",
@@ -111,8 +187,18 @@ function Bucket({
               </div>
               <div className="col-span-2 flex justify-end gap-1.5">
                 <Button size="sm" variant="outline" className="h-8" onClick={() => onOpen(lead!.id)}>Open</Button>
-                <Button size="sm" className="h-8" onClick={() => onDone(f.id)}>
-                  <CheckCircle2 className="h-3.5 w-3.5 mr-1" /> Done
+                <Button 
+                  size="sm" 
+                  className="h-8" 
+                  onClick={() => onDone(f.id)}
+                  disabled={completing === f.id}
+                >
+                  {completing === f.id ? (
+                    <Loader2 className="h-3.5 w-3.5 mr-1 animate-spin" />
+                  ) : (
+                    <CheckCircle2 className="h-3.5 w-3.5 mr-1" />
+                  )}
+                  {completing === f.id ? 'Saving...' : 'Done'}
                 </Button>
               </div>
             </div>

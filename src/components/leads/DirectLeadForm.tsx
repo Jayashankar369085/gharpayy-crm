@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { DuplicateModal } from "./DuplicateModal";
+import { DuplicateLeadModal } from "../DuplicateLeadModal";
+import * as apiClient from "@/lib/crm-api-client";
 
 interface Props {
   onCreated?: (lead: UnifiedLead) => void;
@@ -42,6 +44,9 @@ export function DirectLeadForm({ onCreated }: Props) {
   const [match, setMatch] = useState<MatchResult | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [showDuplicateWarning, setShowDuplicateWarning] = useState(false);
+  const [duplicateData, setDuplicateData] = useState<{ duplicates: any[], lead: any } | null>(null);
+  const [creatingWithDuplicates, setCreatingWithDuplicates] = useState(false);
 
   // Auto-detect zone when location changes
   useEffect(() => {
@@ -77,26 +82,77 @@ export function DirectLeadForm({ onCreated }: Props) {
       return;
     }
     setSubmitting(true);
+    
+    // First, use local duplicate checking (identity store)
     const result = checkDuplicates(draft);
     setMatch(result);
     setShowModal(true);
     setSubmitting(false);
   };
 
-  const onForceCreate = () => {
-    const lead = createLead(draft);
-    toast.success(`Lead created · ULID ${lead.ulid.slice(0, 12)}…`);
-    setShowModal(false);
-    setDraft(emptyDraft());
-    setTouched({});
-    setMatch(null);
-    onCreated?.(lead);
+  const onForceCreate = async () => {
+    // User confirmed to create anyway - now check with API before finalizing
+    setCreatingWithDuplicates(true);
+    try {
+      const phone = draft.phone ? draft.phone.replace(/\D/g, '') : undefined;
+      const email = draft.email?.trim() || undefined;
+      
+      // Check for API-level duplicates
+      const apiCheckResult = await apiClient.checkDuplicate(phone, email);
+      
+      if (apiCheckResult.isDuplicate && apiCheckResult.duplicates?.length > 0) {
+        // Show API duplicate warning
+        setDuplicateData({
+          duplicates: apiCheckResult.duplicates,
+          lead: {
+            name: draft.name,
+            phone: draft.phone,
+            email: draft.email
+          }
+        });
+        setShowDuplicateWarning(true);
+        setSubmitting(false);
+        setCreatingWithDuplicates(false);
+        return;
+      }
+
+      // No API duplicates - create locally
+      const lead = createLead(draft);
+      toast.success(`Lead created · ULID ${lead.ulid.slice(0, 12)}…`);
+      setShowModal(false);
+      setDraft(emptyDraft());
+      setTouched({});
+      setMatch(null);
+      onCreated?.(lead);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to check duplicates';
+      toast.error(message);
+    } finally {
+      setCreatingWithDuplicates(false);
+    }
   };
 
   const onUseExisting = (lead: UnifiedLead) => {
     toast.info(`Opening existing lead: ${lead.name}`);
     setShowModal(false);
     onCreated?.(lead);
+  };
+
+  const onProceedWithDuplicates = () => {
+    // User confirmed to create anyway - create locally
+    const lead = createLead(draft);
+    toast.success(`Lead created · ULID ${lead.ulid.slice(0, 12)}…`);
+    setShowDuplicateWarning(false);
+    setDuplicateData(null);
+    setDraft(emptyDraft());
+    setTouched({});
+    setMatch(null);
+    onCreated?.(lead);
+  };
+
+  const onCancelDuplicateWarning = () => {
+    setShowDuplicateWarning(false);
+    setDuplicateData(null);
   };
 
   const showError = (k: keyof ParsedLeadDraft) => touched[k as string] && errors[k];
@@ -272,6 +328,17 @@ export function DirectLeadForm({ onCreated }: Props) {
         onForceCreate={onForceCreate}
         onUseExisting={onUseExisting}
       />
+
+      {duplicateData && (
+        <DuplicateLeadModal
+          open={showDuplicateWarning}
+          duplicates={duplicateData.duplicates}
+          leadData={duplicateData.lead}
+          onProceed={onProceedWithDuplicates}
+          onCancel={onCancelDuplicateWarning}
+          loading={creatingWithDuplicates}
+        />
+      )}
     </div>
   );
 }

@@ -106,6 +106,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const navByRole: Record<typeof role, NavItem[]> = {
     hr: [
       { to: "/today", label: "Today", icon: Sun, badge: queue.length, section: "Daily Run" },
+      { to: "/dashboard-daily", label: "Daily Summary", icon: LayoutDashboard, section: "Daily Run" },
       { to: "/impact", label: "Impact Queue", icon: Rocket, accent: true, section: "Daily Run" },
       { to: "/execution", label: "Execution", icon: Zap, accent: true, section: "Daily Run" },
       { to: "/visit-war", label: "Visit War Room", icon: Activity, accent: true, section: "Daily Run" },
@@ -145,6 +146,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     ],
     "flow-ops": [
       { to: "/today", label: "Today", icon: Sun, badge: queue.length, section: "Daily Run" },
+      { to: "/dashboard-daily", label: "Daily Summary", icon: LayoutDashboard, section: "Daily Run" },
       { to: "/impact", label: "Impact Queue", icon: Rocket, accent: true, section: "Daily Run" },
       { to: "/execution", label: "Execution", icon: Zap, accent: true, section: "Daily Run" },
       { to: "/visit-war", label: "Visit War Room", icon: Activity, accent: true, section: "Daily Run" },

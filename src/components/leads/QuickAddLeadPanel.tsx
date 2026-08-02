@@ -18,10 +18,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useIdentityStore } from "@/lib/lead-identity/store";
 import { detectZone, parseLead } from "@/lib/lead-identity/parser";
-import { teamMembers } from "@/myt/lib/mock-data";
 import { toast } from "sonner";
-import { Save, Repeat2, Phone, MapPin, Sparkles, X } from "lucide-react";
+import { Save, Repeat2, Phone, MapPin, Sparkles, X, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import * as apiClient from "@/lib/crm-api-client";
 
 interface Props { open: boolean; onClose: () => void; }
 
@@ -63,6 +63,30 @@ const BLR_OPTS = [
 export function QuickAddLeadPanel({ open, onClose }: Props) {
   const checkDup = useIdentityStore((s) => s.checkDuplicates);
   const create = useIdentityStore((s) => s.createLead);
+  
+  const [tcms, setTcms] = useState<any[]>([]);
+  const [tcmsLoading, setTcmsLoading] = useState(false);
+
+  // Load TCMs from API on mount
+  useEffect(() => {
+    if (open) {
+      loadTcms();
+    }
+  }, [open]);
+
+  const loadTcms = async () => {
+    setTcmsLoading(true);
+    try {
+      const data = await apiClient.getTCMs();
+      setTcms(data);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to load team members';
+      toast.error('Failed to load team members: ' + message);
+      setTcms([]);
+    } finally {
+      setTcmsLoading(false);
+    }
+  };
 
   // Core
   const [name, setName] = useState("");
@@ -113,7 +137,7 @@ export function QuickAddLeadPanel({ open, onClose }: Props) {
       return;
     }
     const areasArr = areasText.split(",").map((a) => a.trim()).filter(Boolean);
-    const assignee = teamMembers.find((m) => m.id === assigneeId);
+    const assignee = tcms.find((m) => m.id === assigneeId);
     const lead = create(
       {
         name: name.trim(),
@@ -301,7 +325,11 @@ export function QuickAddLeadPanel({ open, onClose }: Props) {
               className="w-full h-9 bg-background border border-border rounded-md px-2 text-xs"
             >
               <option value="">Unassigned</option>
-              {teamMembers.map((m) => <option key={m.id} value={m.id}>{m.name}</option>)}
+              {tcmsLoading ? (
+                <option disabled>Loading team members...</option>
+              ) : (
+                tcms.map((m) => <option key={m.id} value={m.id}>{m.name}</option>)
+              )}
             </select>
           </Field>
 

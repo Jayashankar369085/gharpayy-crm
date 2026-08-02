@@ -9,279 +9,105 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ZoneBrainRouteImport } from './routes/zone-brain'
-import { Route as WarRoomRouteImport } from './routes/war-room'
-import { Route as VisitWarRouteImport } from './routes/visit-war'
-import { Route as ToursRouteImport } from './routes/tours'
-import { Route as TodayRouteImport } from './routes/today'
-import { Route as SettingsRouteImport } from './routes/settings'
-import { Route as SequencesRouteImport } from './routes/sequences'
-import { Route as RevivalRouteImport } from './routes/revival'
-import { Route as RevenueRouteImport } from './routes/revenue'
-import { Route as QueueRouteImport } from './routes/queue'
-import { Route as PropertyHubRouteImport } from './routes/property-hub'
-import { Route as OwnerPortalRouteImport } from './routes/owner-portal'
-import { Route as OwnerBookingsRouteImport } from './routes/owner-bookings'
-import { Route as OwnerAccountsRouteImport } from './routes/owner-accounts'
-import { Route as ManagerRouteImport } from './routes/manager'
-import { Route as LiveVisitRouteImport } from './routes/live-visit'
-import { Route as LeadsRouteImport } from './routes/leads'
-import { Route as LeaderboardRouteImport } from './routes/leaderboard'
-import { Route as InventoryTruthRouteImport } from './routes/inventory-truth'
-import { Route as InventoryRouteImport } from './routes/inventory'
-import { Route as InboxRouteImport } from './routes/inbox'
-import { Route as ImpactRouteImport } from './routes/impact'
-import { Route as HelpRouteImport } from './routes/help'
-import { Route as HeatmapRouteImport } from './routes/heatmap'
-import { Route as HealthRouteImport } from './routes/health'
-import { Route as HandoffsRouteImport } from './routes/handoffs'
-import { Route as FunnelRouteImport } from './routes/funnel'
-import { Route as FollowUpsRouteImport } from './routes/follow-ups'
-import { Route as ExecutionRouteImport } from './routes/execution'
-import { Route as EasyRouteImport } from './routes/easy'
-import { Route as DemoLoadRouteImport } from './routes/demo-load'
-import { Route as CoachRouteImport } from './routes/coach'
-import { Route as CheckinsRouteImport } from './routes/checkins'
-import { Route as CalendarRouteImport } from './routes/calendar'
-import { Route as AtcRouteImport } from './routes/atc'
-import { Route as AdminRouteImport } from './routes/admin'
-import { Route as ActivityRouteImport } from './routes/activity'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as SupplyHubIndexRouteImport } from './routes/supply-hub/index'
-import { Route as OwnerIndexRouteImport } from './routes/owner/index'
-import { Route as MytIndexRouteImport } from './routes/myt/index'
+import { Route as ActivityRouteImport } from './routes/activity'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AtcRouteImport } from './routes/atc'
+import { Route as CalendarRouteImport } from './routes/calendar'
+import { Route as CheckinsRouteImport } from './routes/checkins'
+import { Route as CoachRouteImport } from './routes/coach'
+import { Route as DashboardDailyRouteImport } from './routes/dashboard-daily'
+import { Route as DemoLoadRouteImport } from './routes/demo-load'
+import { Route as EasyRouteImport } from './routes/easy'
+import { Route as ExecutionRouteImport } from './routes/execution'
+import { Route as FollowUpsRouteImport } from './routes/follow-ups'
+import { Route as FunnelRouteImport } from './routes/funnel'
+import { Route as HandoffsRouteImport } from './routes/handoffs'
+import { Route as HealthRouteImport } from './routes/health'
+import { Route as HeatmapRouteImport } from './routes/heatmap'
+import { Route as HelpRouteImport } from './routes/help'
+import { Route as ImpactRouteImport } from './routes/impact'
+import { Route as InboxRouteImport } from './routes/inbox'
+import { Route as InventoryRouteImport } from './routes/inventory'
+import { Route as InventoryTruthRouteImport } from './routes/inventory-truth'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
+import { Route as LeadsRouteImport } from './routes/leads'
+import { Route as LiveVisitRouteImport } from './routes/live-visit'
+import { Route as ManagerRouteImport } from './routes/manager'
+import { Route as OwnerAccountsRouteImport } from './routes/owner-accounts'
+import { Route as OwnerBookingsRouteImport } from './routes/owner-bookings'
+import { Route as OwnerPortalRouteImport } from './routes/owner-portal'
+import { Route as PropertyHubRouteImport } from './routes/property-hub'
+import { Route as QueueRouteImport } from './routes/queue'
+import { Route as RevenueRouteImport } from './routes/revenue'
+import { Route as RevivalRouteImport } from './routes/revival'
+import { Route as SequencesRouteImport } from './routes/sequences'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as TodayRouteImport } from './routes/today'
+import { Route as ToursRouteImport } from './routes/tours'
+import { Route as VisitWarRouteImport } from './routes/visit-war'
+import { Route as WarRoomRouteImport } from './routes/war-room'
+import { Route as ZoneBrainRouteImport } from './routes/zone-brain'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
-import { Route as SupplyHubMatchRouteImport } from './routes/supply-hub/match'
-import { Route as SupplyHubAreasRouteImport } from './routes/supply-hub/areas'
-import { Route as SupplyHubIdRouteImport } from './routes/supply-hub/$id'
-import { Route as OwnerVisitsRouteImport } from './routes/owner/visits'
-import { Route as OwnerRoomsRouteImport } from './routes/owner/rooms'
-import { Route as OwnerRegistryRouteImport } from './routes/owner/registry'
-import { Route as OwnerInventoryRouteImport } from './routes/owner/inventory'
-import { Route as OwnerInsightsRouteImport } from './routes/owner/insights'
-import { Route as OwnerHubRouteImport } from './routes/owner/hub'
-import { Route as OwnerBookingApprovalsRouteImport } from './routes/owner/booking-approvals'
-import { Route as OwnerBlocksRouteImport } from './routes/owner/blocks'
-import { Route as MytZonesRouteImport } from './routes/myt/zones'
-import { Route as MytWarRoomRouteImport } from './routes/myt/war-room'
-import { Route as MytToursRouteImport } from './routes/myt/tours'
-import { Route as MytTeamRouteImport } from './routes/myt/team'
-import { Route as MytTcmRouteImport } from './routes/myt/tcm'
-import { Route as MytSettingsRouteImport } from './routes/myt/settings'
-import { Route as MytScoreRouteImport } from './routes/myt/score'
-import { Route as MytScheduleRouteImport } from './routes/myt/schedule'
-import { Route as MytPropertiesRouteImport } from './routes/myt/properties'
-import { Route as MytOwnersCompareRouteImport } from './routes/myt/owners-compare'
-import { Route as MytMismatchRouteImport } from './routes/myt/mismatch'
-import { Route as MytMarketplaceRouteImport } from './routes/myt/marketplace'
-import { Route as MytLeadsRouteImport } from './routes/myt/leads'
-import { Route as MytLeaderboardRouteImport } from './routes/myt/leaderboard'
-import { Route as MytInventoryFeedbackRouteImport } from './routes/myt/inventory-feedback'
-import { Route as MytFunnelRouteImport } from './routes/myt/funnel'
-import { Route as MytFlowOpsRouteImport } from './routes/myt/flow-ops'
-import { Route as MytDraftsRouteImport } from './routes/myt/drafts'
-import { Route as MytCalendarRouteImport } from './routes/myt/calendar'
-import { Route as MytBookingsRouteImport } from './routes/myt/bookings'
-import { Route as LeadsAddRouteImport } from './routes/leads.add'
-import { Route as AppSplatRouteImport } from './routes/app.$'
-import { Route as AdminWarRoomRouteImport } from './routes/admin.war-room'
-import { Route as AdminVisitsRouteImport } from './routes/admin.visits'
-import { Route as AdminSupremeRouteImport } from './routes/admin.supreme'
-import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
-import { Route as AdminPropertyBookingsRouteImport } from './routes/admin.property-bookings'
-import { Route as AdminPeopleRouteImport } from './routes/admin.people'
-import { Route as AdminOwnersRouteImport } from './routes/admin.owners'
-import { Route as AdminLeadsRouteImport } from './routes/admin.leads'
-import { Route as AdminIntelligenceRouteImport } from './routes/admin.intelligence'
-import { Route as AdminExportsRouteImport } from './routes/admin.exports'
-import { Route as AdminCommandRouteImport } from './routes/admin.command'
-import { Route as AdminCalendarRouteImport } from './routes/admin.calendar'
 import { Route as AdminAuditRouteImport } from './routes/admin.audit'
-import { Route as OwnerMediaRoomIdRouteImport } from './routes/owner/media.$roomId'
-import { Route as MytTourIdRouteImport } from './routes/myt/tour.$id'
-import { Route as MytTcmPerformanceRouteImport } from './routes/myt/tcm.performance'
-import { Route as MytTcmActionsRouteImport } from './routes/myt/tcm.actions'
+import { Route as AdminCalendarRouteImport } from './routes/admin.calendar'
+import { Route as AdminCommandRouteImport } from './routes/admin.command'
+import { Route as AdminExportsRouteImport } from './routes/admin.exports'
+import { Route as AdminIntelligenceRouteImport } from './routes/admin.intelligence'
+import { Route as AdminLeadsRouteImport } from './routes/admin.leads'
+import { Route as AdminOwnersRouteImport } from './routes/admin.owners'
+import { Route as AdminPeopleRouteImport } from './routes/admin.people'
+import { Route as AdminPropertyBookingsRouteImport } from './routes/admin.property-bookings'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminSupremeRouteImport } from './routes/admin.supreme'
+import { Route as AdminVisitsRouteImport } from './routes/admin.visits'
+import { Route as AdminWarRoomRouteImport } from './routes/admin.war-room'
+import { Route as AppSplatRouteImport } from './routes/app.$'
+import { Route as LeadsAddRouteImport } from './routes/leads.add'
+import { Route as MytIndexRouteImport } from './routes/myt/index'
+import { Route as MytBookingsRouteImport } from './routes/myt/bookings'
+import { Route as MytCalendarRouteImport } from './routes/myt/calendar'
+import { Route as MytDraftsRouteImport } from './routes/myt/drafts'
+import { Route as MytFlowOpsRouteImport } from './routes/myt/flow-ops'
+import { Route as MytFunnelRouteImport } from './routes/myt/funnel'
+import { Route as MytInventoryFeedbackRouteImport } from './routes/myt/inventory-feedback'
+import { Route as MytLeaderboardRouteImport } from './routes/myt/leaderboard'
+import { Route as MytLeadsRouteImport } from './routes/myt/leads'
+import { Route as MytMarketplaceRouteImport } from './routes/myt/marketplace'
+import { Route as MytMismatchRouteImport } from './routes/myt/mismatch'
+import { Route as MytOwnersCompareRouteImport } from './routes/myt/owners-compare'
+import { Route as MytPropertiesRouteImport } from './routes/myt/properties'
+import { Route as MytScheduleRouteImport } from './routes/myt/schedule'
+import { Route as MytScoreRouteImport } from './routes/myt/score'
+import { Route as MytSettingsRouteImport } from './routes/myt/settings'
+import { Route as MytTcmRouteImport } from './routes/myt/tcm'
+import { Route as MytTeamRouteImport } from './routes/myt/team'
+import { Route as MytToursRouteImport } from './routes/myt/tours'
+import { Route as MytWarRoomRouteImport } from './routes/myt/war-room'
+import { Route as MytZonesRouteImport } from './routes/myt/zones'
+import { Route as OwnerIndexRouteImport } from './routes/owner/index'
+import { Route as OwnerBlocksRouteImport } from './routes/owner/blocks'
+import { Route as OwnerBookingApprovalsRouteImport } from './routes/owner/booking-approvals'
+import { Route as OwnerHubRouteImport } from './routes/owner/hub'
+import { Route as OwnerInsightsRouteImport } from './routes/owner/insights'
+import { Route as OwnerInventoryRouteImport } from './routes/owner/inventory'
+import { Route as OwnerRegistryRouteImport } from './routes/owner/registry'
+import { Route as OwnerRoomsRouteImport } from './routes/owner/rooms'
+import { Route as OwnerVisitsRouteImport } from './routes/owner/visits'
+import { Route as SupplyHubIndexRouteImport } from './routes/supply-hub/index'
+import { Route as SupplyHubIdRouteImport } from './routes/supply-hub/$id'
+import { Route as SupplyHubAreasRouteImport } from './routes/supply-hub/areas'
+import { Route as SupplyHubMatchRouteImport } from './routes/supply-hub/match'
 import { Route as MytFeedbackIdRouteImport } from './routes/myt/feedback.$id'
+import { Route as MytTcmActionsRouteImport } from './routes/myt/tcm.actions'
+import { Route as MytTcmPerformanceRouteImport } from './routes/myt/tcm.performance'
+import { Route as MytTourIdRouteImport } from './routes/myt/tour.$id'
+import { Route as OwnerMediaRoomIdRouteImport } from './routes/owner/media.$roomId'
 import { Route as MytTourIdReportRouteImport } from './routes/myt/tour.$id.report'
 
-const ZoneBrainRoute = ZoneBrainRouteImport.update({
-  id: '/zone-brain',
-  path: '/zone-brain',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const WarRoomRoute = WarRoomRouteImport.update({
-  id: '/war-room',
-  path: '/war-room',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VisitWarRoute = VisitWarRouteImport.update({
-  id: '/visit-war',
-  path: '/visit-war',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ToursRoute = ToursRouteImport.update({
-  id: '/tours',
-  path: '/tours',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TodayRoute = TodayRouteImport.update({
-  id: '/today',
-  path: '/today',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SettingsRoute = SettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SequencesRoute = SequencesRouteImport.update({
-  id: '/sequences',
-  path: '/sequences',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RevivalRoute = RevivalRouteImport.update({
-  id: '/revival',
-  path: '/revival',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RevenueRoute = RevenueRouteImport.update({
-  id: '/revenue',
-  path: '/revenue',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const QueueRoute = QueueRouteImport.update({
-  id: '/queue',
-  path: '/queue',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PropertyHubRoute = PropertyHubRouteImport.update({
-  id: '/property-hub',
-  path: '/property-hub',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OwnerPortalRoute = OwnerPortalRouteImport.update({
-  id: '/owner-portal',
-  path: '/owner-portal',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OwnerBookingsRoute = OwnerBookingsRouteImport.update({
-  id: '/owner-bookings',
-  path: '/owner-bookings',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OwnerAccountsRoute = OwnerAccountsRouteImport.update({
-  id: '/owner-accounts',
-  path: '/owner-accounts',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ManagerRoute = ManagerRouteImport.update({
-  id: '/manager',
-  path: '/manager',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LiveVisitRoute = LiveVisitRouteImport.update({
-  id: '/live-visit',
-  path: '/live-visit',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LeadsRoute = LeadsRouteImport.update({
-  id: '/leads',
-  path: '/leads',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LeaderboardRoute = LeaderboardRouteImport.update({
-  id: '/leaderboard',
-  path: '/leaderboard',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const InventoryTruthRoute = InventoryTruthRouteImport.update({
-  id: '/inventory-truth',
-  path: '/inventory-truth',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const InventoryRoute = InventoryRouteImport.update({
-  id: '/inventory',
-  path: '/inventory',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const InboxRoute = InboxRouteImport.update({
-  id: '/inbox',
-  path: '/inbox',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ImpactRoute = ImpactRouteImport.update({
-  id: '/impact',
-  path: '/impact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HelpRoute = HelpRouteImport.update({
-  id: '/help',
-  path: '/help',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HeatmapRoute = HeatmapRouteImport.update({
-  id: '/heatmap',
-  path: '/heatmap',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HealthRoute = HealthRouteImport.update({
-  id: '/health',
-  path: '/health',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HandoffsRoute = HandoffsRouteImport.update({
-  id: '/handoffs',
-  path: '/handoffs',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FunnelRoute = FunnelRouteImport.update({
-  id: '/funnel',
-  path: '/funnel',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FollowUpsRoute = FollowUpsRouteImport.update({
-  id: '/follow-ups',
-  path: '/follow-ups',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ExecutionRoute = ExecutionRouteImport.update({
-  id: '/execution',
-  path: '/execution',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EasyRoute = EasyRouteImport.update({
-  id: '/easy',
-  path: '/easy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoLoadRoute = DemoLoadRouteImport.update({
-  id: '/demo-load',
-  path: '/demo-load',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CoachRoute = CoachRouteImport.update({
-  id: '/coach',
-  path: '/coach',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CheckinsRoute = CheckinsRouteImport.update({
-  id: '/checkins',
-  path: '/checkins',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CalendarRoute = CalendarRouteImport.update({
-  id: '/calendar',
-  path: '/calendar',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AtcRoute = AtcRouteImport.update({
-  id: '/atc',
-  path: '/atc',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminRoute = AdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ActivityRoute = ActivityRouteImport.update({
@@ -289,24 +115,189 @@ const ActivityRoute = ActivityRouteImport.update({
   path: '/activity',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SupplyHubIndexRoute = SupplyHubIndexRouteImport.update({
-  id: '/supply-hub/',
-  path: '/supply-hub/',
+const AtcRoute = AtcRouteImport.update({
+  id: '/atc',
+  path: '/atc',
   getParentRoute: () => rootRouteImport,
 } as any)
-const OwnerIndexRoute = OwnerIndexRouteImport.update({
-  id: '/owner/',
-  path: '/owner/',
+const CalendarRoute = CalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MytIndexRoute = MytIndexRouteImport.update({
-  id: '/myt/',
-  path: '/myt/',
+const CheckinsRoute = CheckinsRouteImport.update({
+  id: '/checkins',
+  path: '/checkins',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoachRoute = CoachRouteImport.update({
+  id: '/coach',
+  path: '/coach',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardDailyRoute = DashboardDailyRouteImport.update({
+  id: '/dashboard-daily',
+  path: '/dashboard-daily',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoLoadRoute = DemoLoadRouteImport.update({
+  id: '/demo-load',
+  path: '/demo-load',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EasyRoute = EasyRouteImport.update({
+  id: '/easy',
+  path: '/easy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExecutionRoute = ExecutionRouteImport.update({
+  id: '/execution',
+  path: '/execution',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FollowUpsRoute = FollowUpsRouteImport.update({
+  id: '/follow-ups',
+  path: '/follow-ups',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FunnelRoute = FunnelRouteImport.update({
+  id: '/funnel',
+  path: '/funnel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HandoffsRoute = HandoffsRouteImport.update({
+  id: '/handoffs',
+  path: '/handoffs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HealthRoute = HealthRouteImport.update({
+  id: '/health',
+  path: '/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HeatmapRoute = HeatmapRouteImport.update({
+  id: '/heatmap',
+  path: '/heatmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpactRoute = ImpactRouteImport.update({
+  id: '/impact',
+  path: '/impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InboxRoute = InboxRouteImport.update({
+  id: '/inbox',
+  path: '/inbox',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventoryRoute = InventoryRouteImport.update({
+  id: '/inventory',
+  path: '/inventory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventoryTruthRoute = InventoryTruthRouteImport.update({
+  id: '/inventory-truth',
+  path: '/inventory-truth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeadsRoute = LeadsRouteImport.update({
+  id: '/leads',
+  path: '/leads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiveVisitRoute = LiveVisitRouteImport.update({
+  id: '/live-visit',
+  path: '/live-visit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManagerRoute = ManagerRouteImport.update({
+  id: '/manager',
+  path: '/manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwnerAccountsRoute = OwnerAccountsRouteImport.update({
+  id: '/owner-accounts',
+  path: '/owner-accounts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwnerBookingsRoute = OwnerBookingsRouteImport.update({
+  id: '/owner-bookings',
+  path: '/owner-bookings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwnerPortalRoute = OwnerPortalRouteImport.update({
+  id: '/owner-portal',
+  path: '/owner-portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropertyHubRoute = PropertyHubRouteImport.update({
+  id: '/property-hub',
+  path: '/property-hub',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QueueRoute = QueueRouteImport.update({
+  id: '/queue',
+  path: '/queue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RevenueRoute = RevenueRouteImport.update({
+  id: '/revenue',
+  path: '/revenue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RevivalRoute = RevivalRouteImport.update({
+  id: '/revival',
+  path: '/revival',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SequencesRoute = SequencesRouteImport.update({
+  id: '/sequences',
+  path: '/sequences',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TodayRoute = TodayRouteImport.update({
+  id: '/today',
+  path: '/today',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToursRoute = ToursRouteImport.update({
+  id: '/tours',
+  path: '/tours',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisitWarRoute = VisitWarRouteImport.update({
+  id: '/visit-war',
+  path: '/visit-war',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WarRoomRoute = WarRoomRouteImport.update({
+  id: '/war-room',
+  path: '/war-room',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZoneBrainRoute = ZoneBrainRouteImport.update({
+  id: '/zone-brain',
+  path: '/zone-brain',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
@@ -314,224 +305,9 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminRoute,
 } as any)
-const SupplyHubMatchRoute = SupplyHubMatchRouteImport.update({
-  id: '/supply-hub/match',
-  path: '/supply-hub/match',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SupplyHubAreasRoute = SupplyHubAreasRouteImport.update({
-  id: '/supply-hub/areas',
-  path: '/supply-hub/areas',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SupplyHubIdRoute = SupplyHubIdRouteImport.update({
-  id: '/supply-hub/$id',
-  path: '/supply-hub/$id',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OwnerVisitsRoute = OwnerVisitsRouteImport.update({
-  id: '/owner/visits',
-  path: '/owner/visits',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OwnerRoomsRoute = OwnerRoomsRouteImport.update({
-  id: '/owner/rooms',
-  path: '/owner/rooms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OwnerRegistryRoute = OwnerRegistryRouteImport.update({
-  id: '/owner/registry',
-  path: '/owner/registry',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OwnerInventoryRoute = OwnerInventoryRouteImport.update({
-  id: '/owner/inventory',
-  path: '/owner/inventory',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OwnerInsightsRoute = OwnerInsightsRouteImport.update({
-  id: '/owner/insights',
-  path: '/owner/insights',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OwnerHubRoute = OwnerHubRouteImport.update({
-  id: '/owner/hub',
-  path: '/owner/hub',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OwnerBookingApprovalsRoute = OwnerBookingApprovalsRouteImport.update({
-  id: '/owner/booking-approvals',
-  path: '/owner/booking-approvals',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OwnerBlocksRoute = OwnerBlocksRouteImport.update({
-  id: '/owner/blocks',
-  path: '/owner/blocks',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytZonesRoute = MytZonesRouteImport.update({
-  id: '/myt/zones',
-  path: '/myt/zones',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytWarRoomRoute = MytWarRoomRouteImport.update({
-  id: '/myt/war-room',
-  path: '/myt/war-room',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytToursRoute = MytToursRouteImport.update({
-  id: '/myt/tours',
-  path: '/myt/tours',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytTeamRoute = MytTeamRouteImport.update({
-  id: '/myt/team',
-  path: '/myt/team',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytTcmRoute = MytTcmRouteImport.update({
-  id: '/myt/tcm',
-  path: '/myt/tcm',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytSettingsRoute = MytSettingsRouteImport.update({
-  id: '/myt/settings',
-  path: '/myt/settings',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytScoreRoute = MytScoreRouteImport.update({
-  id: '/myt/score',
-  path: '/myt/score',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytScheduleRoute = MytScheduleRouteImport.update({
-  id: '/myt/schedule',
-  path: '/myt/schedule',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytPropertiesRoute = MytPropertiesRouteImport.update({
-  id: '/myt/properties',
-  path: '/myt/properties',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytOwnersCompareRoute = MytOwnersCompareRouteImport.update({
-  id: '/myt/owners-compare',
-  path: '/myt/owners-compare',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytMismatchRoute = MytMismatchRouteImport.update({
-  id: '/myt/mismatch',
-  path: '/myt/mismatch',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytMarketplaceRoute = MytMarketplaceRouteImport.update({
-  id: '/myt/marketplace',
-  path: '/myt/marketplace',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytLeadsRoute = MytLeadsRouteImport.update({
-  id: '/myt/leads',
-  path: '/myt/leads',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytLeaderboardRoute = MytLeaderboardRouteImport.update({
-  id: '/myt/leaderboard',
-  path: '/myt/leaderboard',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytInventoryFeedbackRoute = MytInventoryFeedbackRouteImport.update({
-  id: '/myt/inventory-feedback',
-  path: '/myt/inventory-feedback',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytFunnelRoute = MytFunnelRouteImport.update({
-  id: '/myt/funnel',
-  path: '/myt/funnel',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytFlowOpsRoute = MytFlowOpsRouteImport.update({
-  id: '/myt/flow-ops',
-  path: '/myt/flow-ops',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytDraftsRoute = MytDraftsRouteImport.update({
-  id: '/myt/drafts',
-  path: '/myt/drafts',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytCalendarRoute = MytCalendarRouteImport.update({
-  id: '/myt/calendar',
-  path: '/myt/calendar',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MytBookingsRoute = MytBookingsRouteImport.update({
-  id: '/myt/bookings',
-  path: '/myt/bookings',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LeadsAddRoute = LeadsAddRouteImport.update({
-  id: '/add',
-  path: '/add',
-  getParentRoute: () => LeadsRoute,
-} as any)
-const AppSplatRoute = AppSplatRouteImport.update({
-  id: '/app/$',
-  path: '/app/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminWarRoomRoute = AdminWarRoomRouteImport.update({
-  id: '/war-room',
-  path: '/war-room',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminVisitsRoute = AdminVisitsRouteImport.update({
-  id: '/visits',
-  path: '/visits',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminSupremeRoute = AdminSupremeRouteImport.update({
-  id: '/supreme',
-  path: '/supreme',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminSettingsRoute = AdminSettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminPropertyBookingsRoute = AdminPropertyBookingsRouteImport.update({
-  id: '/property-bookings',
-  path: '/property-bookings',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminPeopleRoute = AdminPeopleRouteImport.update({
-  id: '/people',
-  path: '/people',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminOwnersRoute = AdminOwnersRouteImport.update({
-  id: '/owners',
-  path: '/owners',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminLeadsRoute = AdminLeadsRouteImport.update({
-  id: '/leads',
-  path: '/leads',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminIntelligenceRoute = AdminIntelligenceRouteImport.update({
-  id: '/intelligence',
-  path: '/intelligence',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminExportsRoute = AdminExportsRouteImport.update({
-  id: '/exports',
-  path: '/exports',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminCommandRoute = AdminCommandRouteImport.update({
-  id: '/command',
-  path: '/command',
+const AdminAuditRoute = AdminAuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminCalendarRoute = AdminCalendarRouteImport.update({
@@ -539,34 +315,264 @@ const AdminCalendarRoute = AdminCalendarRouteImport.update({
   path: '/calendar',
   getParentRoute: () => AdminRoute,
 } as any)
-const AdminAuditRoute = AdminAuditRouteImport.update({
-  id: '/audit',
-  path: '/audit',
+const AdminCommandRoute = AdminCommandRouteImport.update({
+  id: '/command',
+  path: '/command',
   getParentRoute: () => AdminRoute,
 } as any)
-const OwnerMediaRoomIdRoute = OwnerMediaRoomIdRouteImport.update({
-  id: '/owner/media/$roomId',
-  path: '/owner/media/$roomId',
+const AdminExportsRoute = AdminExportsRouteImport.update({
+  id: '/exports',
+  path: '/exports',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminIntelligenceRoute = AdminIntelligenceRouteImport.update({
+  id: '/intelligence',
+  path: '/intelligence',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLeadsRoute = AdminLeadsRouteImport.update({
+  id: '/leads',
+  path: '/leads',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminOwnersRoute = AdminOwnersRouteImport.update({
+  id: '/owners',
+  path: '/owners',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPeopleRoute = AdminPeopleRouteImport.update({
+  id: '/people',
+  path: '/people',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPropertyBookingsRoute = AdminPropertyBookingsRouteImport.update({
+  id: '/property-bookings',
+  path: '/property-bookings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSupremeRoute = AdminSupremeRouteImport.update({
+  id: '/supreme',
+  path: '/supreme',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminVisitsRoute = AdminVisitsRouteImport.update({
+  id: '/visits',
+  path: '/visits',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminWarRoomRoute = AdminWarRoomRouteImport.update({
+  id: '/war-room',
+  path: '/war-room',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AppSplatRoute = AppSplatRouteImport.update({
+  id: '/app/$',
+  path: '/app/$',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MytTourIdRoute = MytTourIdRouteImport.update({
-  id: '/myt/tour/$id',
-  path: '/myt/tour/$id',
+const LeadsAddRoute = LeadsAddRouteImport.update({
+  id: '/add',
+  path: '/add',
+  getParentRoute: () => LeadsRoute,
+} as any)
+const MytIndexRoute = MytIndexRouteImport.update({
+  id: '/myt/',
+  path: '/myt/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MytTcmPerformanceRoute = MytTcmPerformanceRouteImport.update({
-  id: '/performance',
-  path: '/performance',
-  getParentRoute: () => MytTcmRoute,
+const MytBookingsRoute = MytBookingsRouteImport.update({
+  id: '/myt/bookings',
+  path: '/myt/bookings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytCalendarRoute = MytCalendarRouteImport.update({
+  id: '/myt/calendar',
+  path: '/myt/calendar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytDraftsRoute = MytDraftsRouteImport.update({
+  id: '/myt/drafts',
+  path: '/myt/drafts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytFlowOpsRoute = MytFlowOpsRouteImport.update({
+  id: '/myt/flow-ops',
+  path: '/myt/flow-ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytFunnelRoute = MytFunnelRouteImport.update({
+  id: '/myt/funnel',
+  path: '/myt/funnel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytInventoryFeedbackRoute = MytInventoryFeedbackRouteImport.update({
+  id: '/myt/inventory-feedback',
+  path: '/myt/inventory-feedback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytLeaderboardRoute = MytLeaderboardRouteImport.update({
+  id: '/myt/leaderboard',
+  path: '/myt/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytLeadsRoute = MytLeadsRouteImport.update({
+  id: '/myt/leads',
+  path: '/myt/leads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytMarketplaceRoute = MytMarketplaceRouteImport.update({
+  id: '/myt/marketplace',
+  path: '/myt/marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytMismatchRoute = MytMismatchRouteImport.update({
+  id: '/myt/mismatch',
+  path: '/myt/mismatch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytOwnersCompareRoute = MytOwnersCompareRouteImport.update({
+  id: '/myt/owners-compare',
+  path: '/myt/owners-compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytPropertiesRoute = MytPropertiesRouteImport.update({
+  id: '/myt/properties',
+  path: '/myt/properties',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytScheduleRoute = MytScheduleRouteImport.update({
+  id: '/myt/schedule',
+  path: '/myt/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytScoreRoute = MytScoreRouteImport.update({
+  id: '/myt/score',
+  path: '/myt/score',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytSettingsRoute = MytSettingsRouteImport.update({
+  id: '/myt/settings',
+  path: '/myt/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytTcmRoute = MytTcmRouteImport.update({
+  id: '/myt/tcm',
+  path: '/myt/tcm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytTeamRoute = MytTeamRouteImport.update({
+  id: '/myt/team',
+  path: '/myt/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytToursRoute = MytToursRouteImport.update({
+  id: '/myt/tours',
+  path: '/myt/tours',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytWarRoomRoute = MytWarRoomRouteImport.update({
+  id: '/myt/war-room',
+  path: '/myt/war-room',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytZonesRoute = MytZonesRouteImport.update({
+  id: '/myt/zones',
+  path: '/myt/zones',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwnerIndexRoute = OwnerIndexRouteImport.update({
+  id: '/owner/',
+  path: '/owner/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwnerBlocksRoute = OwnerBlocksRouteImport.update({
+  id: '/owner/blocks',
+  path: '/owner/blocks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwnerBookingApprovalsRoute = OwnerBookingApprovalsRouteImport.update({
+  id: '/owner/booking-approvals',
+  path: '/owner/booking-approvals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwnerHubRoute = OwnerHubRouteImport.update({
+  id: '/owner/hub',
+  path: '/owner/hub',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwnerInsightsRoute = OwnerInsightsRouteImport.update({
+  id: '/owner/insights',
+  path: '/owner/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwnerInventoryRoute = OwnerInventoryRouteImport.update({
+  id: '/owner/inventory',
+  path: '/owner/inventory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwnerRegistryRoute = OwnerRegistryRouteImport.update({
+  id: '/owner/registry',
+  path: '/owner/registry',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwnerRoomsRoute = OwnerRoomsRouteImport.update({
+  id: '/owner/rooms',
+  path: '/owner/rooms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwnerVisitsRoute = OwnerVisitsRouteImport.update({
+  id: '/owner/visits',
+  path: '/owner/visits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupplyHubIndexRoute = SupplyHubIndexRouteImport.update({
+  id: '/supply-hub/',
+  path: '/supply-hub/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupplyHubIdRoute = SupplyHubIdRouteImport.update({
+  id: '/supply-hub/$id',
+  path: '/supply-hub/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupplyHubAreasRoute = SupplyHubAreasRouteImport.update({
+  id: '/supply-hub/areas',
+  path: '/supply-hub/areas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupplyHubMatchRoute = SupplyHubMatchRouteImport.update({
+  id: '/supply-hub/match',
+  path: '/supply-hub/match',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MytFeedbackIdRoute = MytFeedbackIdRouteImport.update({
+  id: '/myt/feedback/$id',
+  path: '/myt/feedback/$id',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const MytTcmActionsRoute = MytTcmActionsRouteImport.update({
   id: '/actions',
   path: '/actions',
   getParentRoute: () => MytTcmRoute,
 } as any)
-const MytFeedbackIdRoute = MytFeedbackIdRouteImport.update({
-  id: '/myt/feedback/$id',
-  path: '/myt/feedback/$id',
+const MytTcmPerformanceRoute = MytTcmPerformanceRouteImport.update({
+  id: '/performance',
+  path: '/performance',
+  getParentRoute: () => MytTcmRoute,
+} as any)
+const MytTourIdRoute = MytTourIdRouteImport.update({
+  id: '/myt/tour/$id',
+  path: '/myt/tour/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwnerMediaRoomIdRoute = OwnerMediaRoomIdRouteImport.update({
+  id: '/owner/media/$roomId',
+  path: '/owner/media/$roomId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MytTourIdReportRoute = MytTourIdReportRouteImport.update({
@@ -583,6 +589,7 @@ export interface FileRoutesByFullPath {
   '/calendar': typeof CalendarRoute
   '/checkins': typeof CheckinsRoute
   '/coach': typeof CoachRoute
+  '/dashboard-daily': typeof DashboardDailyRoute
   '/demo-load': typeof DemoLoadRoute
   '/easy': typeof EasyRoute
   '/execution': typeof ExecutionRoute
@@ -678,6 +685,7 @@ export interface FileRoutesByTo {
   '/calendar': typeof CalendarRoute
   '/checkins': typeof CheckinsRoute
   '/coach': typeof CoachRoute
+  '/dashboard-daily': typeof DashboardDailyRoute
   '/demo-load': typeof DemoLoadRoute
   '/easy': typeof EasyRoute
   '/execution': typeof ExecutionRoute
@@ -775,6 +783,7 @@ export interface FileRoutesById {
   '/calendar': typeof CalendarRoute
   '/checkins': typeof CheckinsRoute
   '/coach': typeof CoachRoute
+  '/dashboard-daily': typeof DashboardDailyRoute
   '/demo-load': typeof DemoLoadRoute
   '/easy': typeof EasyRoute
   '/execution': typeof ExecutionRoute
@@ -873,6 +882,7 @@ export interface FileRouteTypes {
     | '/calendar'
     | '/checkins'
     | '/coach'
+    | '/dashboard-daily'
     | '/demo-load'
     | '/easy'
     | '/execution'
@@ -968,6 +978,7 @@ export interface FileRouteTypes {
     | '/calendar'
     | '/checkins'
     | '/coach'
+    | '/dashboard-daily'
     | '/demo-load'
     | '/easy'
     | '/execution'
@@ -1064,6 +1075,7 @@ export interface FileRouteTypes {
     | '/calendar'
     | '/checkins'
     | '/coach'
+    | '/dashboard-daily'
     | '/demo-load'
     | '/easy'
     | '/execution'
@@ -1161,6 +1173,7 @@ export interface RootRouteChildren {
   CalendarRoute: typeof CalendarRoute
   CheckinsRoute: typeof CheckinsRoute
   CoachRoute: typeof CoachRoute
+  DashboardDailyRoute: typeof DashboardDailyRoute
   DemoLoadRoute: typeof DemoLoadRoute
   EasyRoute: typeof EasyRoute
   ExecutionRoute: typeof ExecutionRoute
@@ -1234,256 +1247,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/zone-brain': {
-      id: '/zone-brain'
-      path: '/zone-brain'
-      fullPath: '/zone-brain'
-      preLoaderRoute: typeof ZoneBrainRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/war-room': {
-      id: '/war-room'
-      path: '/war-room'
-      fullPath: '/war-room'
-      preLoaderRoute: typeof WarRoomRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/visit-war': {
-      id: '/visit-war'
-      path: '/visit-war'
-      fullPath: '/visit-war'
-      preLoaderRoute: typeof VisitWarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tours': {
-      id: '/tours'
-      path: '/tours'
-      fullPath: '/tours'
-      preLoaderRoute: typeof ToursRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/today': {
-      id: '/today'
-      path: '/today'
-      fullPath: '/today'
-      preLoaderRoute: typeof TodayRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/settings': {
-      id: '/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof SettingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sequences': {
-      id: '/sequences'
-      path: '/sequences'
-      fullPath: '/sequences'
-      preLoaderRoute: typeof SequencesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/revival': {
-      id: '/revival'
-      path: '/revival'
-      fullPath: '/revival'
-      preLoaderRoute: typeof RevivalRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/revenue': {
-      id: '/revenue'
-      path: '/revenue'
-      fullPath: '/revenue'
-      preLoaderRoute: typeof RevenueRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/queue': {
-      id: '/queue'
-      path: '/queue'
-      fullPath: '/queue'
-      preLoaderRoute: typeof QueueRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/property-hub': {
-      id: '/property-hub'
-      path: '/property-hub'
-      fullPath: '/property-hub'
-      preLoaderRoute: typeof PropertyHubRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/owner-portal': {
-      id: '/owner-portal'
-      path: '/owner-portal'
-      fullPath: '/owner-portal'
-      preLoaderRoute: typeof OwnerPortalRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/owner-bookings': {
-      id: '/owner-bookings'
-      path: '/owner-bookings'
-      fullPath: '/owner-bookings'
-      preLoaderRoute: typeof OwnerBookingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/owner-accounts': {
-      id: '/owner-accounts'
-      path: '/owner-accounts'
-      fullPath: '/owner-accounts'
-      preLoaderRoute: typeof OwnerAccountsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/manager': {
-      id: '/manager'
-      path: '/manager'
-      fullPath: '/manager'
-      preLoaderRoute: typeof ManagerRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/live-visit': {
-      id: '/live-visit'
-      path: '/live-visit'
-      fullPath: '/live-visit'
-      preLoaderRoute: typeof LiveVisitRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/leads': {
-      id: '/leads'
-      path: '/leads'
-      fullPath: '/leads'
-      preLoaderRoute: typeof LeadsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/leaderboard': {
-      id: '/leaderboard'
-      path: '/leaderboard'
-      fullPath: '/leaderboard'
-      preLoaderRoute: typeof LeaderboardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/inventory-truth': {
-      id: '/inventory-truth'
-      path: '/inventory-truth'
-      fullPath: '/inventory-truth'
-      preLoaderRoute: typeof InventoryTruthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/inventory': {
-      id: '/inventory'
-      path: '/inventory'
-      fullPath: '/inventory'
-      preLoaderRoute: typeof InventoryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/inbox': {
-      id: '/inbox'
-      path: '/inbox'
-      fullPath: '/inbox'
-      preLoaderRoute: typeof InboxRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/impact': {
-      id: '/impact'
-      path: '/impact'
-      fullPath: '/impact'
-      preLoaderRoute: typeof ImpactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/help': {
-      id: '/help'
-      path: '/help'
-      fullPath: '/help'
-      preLoaderRoute: typeof HelpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/heatmap': {
-      id: '/heatmap'
-      path: '/heatmap'
-      fullPath: '/heatmap'
-      preLoaderRoute: typeof HeatmapRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/health': {
-      id: '/health'
-      path: '/health'
-      fullPath: '/health'
-      preLoaderRoute: typeof HealthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/handoffs': {
-      id: '/handoffs'
-      path: '/handoffs'
-      fullPath: '/handoffs'
-      preLoaderRoute: typeof HandoffsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/funnel': {
-      id: '/funnel'
-      path: '/funnel'
-      fullPath: '/funnel'
-      preLoaderRoute: typeof FunnelRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/follow-ups': {
-      id: '/follow-ups'
-      path: '/follow-ups'
-      fullPath: '/follow-ups'
-      preLoaderRoute: typeof FollowUpsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/execution': {
-      id: '/execution'
-      path: '/execution'
-      fullPath: '/execution'
-      preLoaderRoute: typeof ExecutionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/easy': {
-      id: '/easy'
-      path: '/easy'
-      fullPath: '/easy'
-      preLoaderRoute: typeof EasyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo-load': {
-      id: '/demo-load'
-      path: '/demo-load'
-      fullPath: '/demo-load'
-      preLoaderRoute: typeof DemoLoadRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/coach': {
-      id: '/coach'
-      path: '/coach'
-      fullPath: '/coach'
-      preLoaderRoute: typeof CoachRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/checkins': {
-      id: '/checkins'
-      path: '/checkins'
-      fullPath: '/checkins'
-      preLoaderRoute: typeof CheckinsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/calendar': {
-      id: '/calendar'
-      path: '/calendar'
-      fullPath: '/calendar'
-      preLoaderRoute: typeof CalendarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/atc': {
-      id: '/atc'
-      path: '/atc'
-      fullPath: '/atc'
-      preLoaderRoute: typeof AtcRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/activity': {
@@ -1493,32 +1261,263 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ActivityRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/supply-hub/': {
-      id: '/supply-hub/'
-      path: '/supply-hub'
-      fullPath: '/supply-hub/'
-      preLoaderRoute: typeof SupplyHubIndexRouteImport
+    '/atc': {
+      id: '/atc'
+      path: '/atc'
+      fullPath: '/atc'
+      preLoaderRoute: typeof AtcRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/owner/': {
-      id: '/owner/'
-      path: '/owner'
-      fullPath: '/owner/'
-      preLoaderRoute: typeof OwnerIndexRouteImport
+    '/calendar': {
+      id: '/calendar'
+      path: '/calendar'
+      fullPath: '/calendar'
+      preLoaderRoute: typeof CalendarRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/myt/': {
-      id: '/myt/'
-      path: '/myt'
-      fullPath: '/myt/'
-      preLoaderRoute: typeof MytIndexRouteImport
+    '/checkins': {
+      id: '/checkins'
+      path: '/checkins'
+      fullPath: '/checkins'
+      preLoaderRoute: typeof CheckinsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coach': {
+      id: '/coach'
+      path: '/coach'
+      fullPath: '/coach'
+      preLoaderRoute: typeof CoachRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard-daily': {
+      id: '/dashboard-daily'
+      path: '/dashboard-daily'
+      fullPath: '/dashboard-daily'
+      preLoaderRoute: typeof DashboardDailyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo-load': {
+      id: '/demo-load'
+      path: '/demo-load'
+      fullPath: '/demo-load'
+      preLoaderRoute: typeof DemoLoadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/easy': {
+      id: '/easy'
+      path: '/easy'
+      fullPath: '/easy'
+      preLoaderRoute: typeof EasyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/execution': {
+      id: '/execution'
+      path: '/execution'
+      fullPath: '/execution'
+      preLoaderRoute: typeof ExecutionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/follow-ups': {
+      id: '/follow-ups'
+      path: '/follow-ups'
+      fullPath: '/follow-ups'
+      preLoaderRoute: typeof FollowUpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/funnel': {
+      id: '/funnel'
+      path: '/funnel'
+      fullPath: '/funnel'
+      preLoaderRoute: typeof FunnelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/handoffs': {
+      id: '/handoffs'
+      path: '/handoffs'
+      fullPath: '/handoffs'
+      preLoaderRoute: typeof HandoffsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/health': {
+      id: '/health'
+      path: '/health'
+      fullPath: '/health'
+      preLoaderRoute: typeof HealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/heatmap': {
+      id: '/heatmap'
+      path: '/heatmap'
+      fullPath: '/heatmap'
+      preLoaderRoute: typeof HeatmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impact': {
+      id: '/impact'
+      path: '/impact'
+      fullPath: '/impact'
+      preLoaderRoute: typeof ImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inbox': {
+      id: '/inbox'
+      path: '/inbox'
+      fullPath: '/inbox'
+      preLoaderRoute: typeof InboxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventory': {
+      id: '/inventory'
+      path: '/inventory'
+      fullPath: '/inventory'
+      preLoaderRoute: typeof InventoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventory-truth': {
+      id: '/inventory-truth'
+      path: '/inventory-truth'
+      fullPath: '/inventory-truth'
+      preLoaderRoute: typeof InventoryTruthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leads': {
+      id: '/leads'
+      path: '/leads'
+      fullPath: '/leads'
+      preLoaderRoute: typeof LeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/live-visit': {
+      id: '/live-visit'
+      path: '/live-visit'
+      fullPath: '/live-visit'
+      preLoaderRoute: typeof LiveVisitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manager': {
+      id: '/manager'
+      path: '/manager'
+      fullPath: '/manager'
+      preLoaderRoute: typeof ManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owner-accounts': {
+      id: '/owner-accounts'
+      path: '/owner-accounts'
+      fullPath: '/owner-accounts'
+      preLoaderRoute: typeof OwnerAccountsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owner-bookings': {
+      id: '/owner-bookings'
+      path: '/owner-bookings'
+      fullPath: '/owner-bookings'
+      preLoaderRoute: typeof OwnerBookingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owner-portal': {
+      id: '/owner-portal'
+      path: '/owner-portal'
+      fullPath: '/owner-portal'
+      preLoaderRoute: typeof OwnerPortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/property-hub': {
+      id: '/property-hub'
+      path: '/property-hub'
+      fullPath: '/property-hub'
+      preLoaderRoute: typeof PropertyHubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/queue': {
+      id: '/queue'
+      path: '/queue'
+      fullPath: '/queue'
+      preLoaderRoute: typeof QueueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/revenue': {
+      id: '/revenue'
+      path: '/revenue'
+      fullPath: '/revenue'
+      preLoaderRoute: typeof RevenueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/revival': {
+      id: '/revival'
+      path: '/revival'
+      fullPath: '/revival'
+      preLoaderRoute: typeof RevivalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sequences': {
+      id: '/sequences'
+      path: '/sequences'
+      fullPath: '/sequences'
+      preLoaderRoute: typeof SequencesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/today': {
+      id: '/today'
+      path: '/today'
+      fullPath: '/today'
+      preLoaderRoute: typeof TodayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tours': {
+      id: '/tours'
+      path: '/tours'
+      fullPath: '/tours'
+      preLoaderRoute: typeof ToursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visit-war': {
+      id: '/visit-war'
+      path: '/visit-war'
+      fullPath: '/visit-war'
+      preLoaderRoute: typeof VisitWarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/war-room': {
+      id: '/war-room'
+      path: '/war-room'
+      fullPath: '/war-room'
+      preLoaderRoute: typeof WarRoomRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zone-brain': {
+      id: '/zone-brain'
+      path: '/zone-brain'
+      fullPath: '/zone-brain'
+      preLoaderRoute: typeof ZoneBrainRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/': {
@@ -1528,312 +1527,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/supply-hub/match': {
-      id: '/supply-hub/match'
-      path: '/supply-hub/match'
-      fullPath: '/supply-hub/match'
-      preLoaderRoute: typeof SupplyHubMatchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/supply-hub/areas': {
-      id: '/supply-hub/areas'
-      path: '/supply-hub/areas'
-      fullPath: '/supply-hub/areas'
-      preLoaderRoute: typeof SupplyHubAreasRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/supply-hub/$id': {
-      id: '/supply-hub/$id'
-      path: '/supply-hub/$id'
-      fullPath: '/supply-hub/$id'
-      preLoaderRoute: typeof SupplyHubIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/owner/visits': {
-      id: '/owner/visits'
-      path: '/owner/visits'
-      fullPath: '/owner/visits'
-      preLoaderRoute: typeof OwnerVisitsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/owner/rooms': {
-      id: '/owner/rooms'
-      path: '/owner/rooms'
-      fullPath: '/owner/rooms'
-      preLoaderRoute: typeof OwnerRoomsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/owner/registry': {
-      id: '/owner/registry'
-      path: '/owner/registry'
-      fullPath: '/owner/registry'
-      preLoaderRoute: typeof OwnerRegistryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/owner/inventory': {
-      id: '/owner/inventory'
-      path: '/owner/inventory'
-      fullPath: '/owner/inventory'
-      preLoaderRoute: typeof OwnerInventoryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/owner/insights': {
-      id: '/owner/insights'
-      path: '/owner/insights'
-      fullPath: '/owner/insights'
-      preLoaderRoute: typeof OwnerInsightsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/owner/hub': {
-      id: '/owner/hub'
-      path: '/owner/hub'
-      fullPath: '/owner/hub'
-      preLoaderRoute: typeof OwnerHubRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/owner/booking-approvals': {
-      id: '/owner/booking-approvals'
-      path: '/owner/booking-approvals'
-      fullPath: '/owner/booking-approvals'
-      preLoaderRoute: typeof OwnerBookingApprovalsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/owner/blocks': {
-      id: '/owner/blocks'
-      path: '/owner/blocks'
-      fullPath: '/owner/blocks'
-      preLoaderRoute: typeof OwnerBlocksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/zones': {
-      id: '/myt/zones'
-      path: '/myt/zones'
-      fullPath: '/myt/zones'
-      preLoaderRoute: typeof MytZonesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/war-room': {
-      id: '/myt/war-room'
-      path: '/myt/war-room'
-      fullPath: '/myt/war-room'
-      preLoaderRoute: typeof MytWarRoomRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/tours': {
-      id: '/myt/tours'
-      path: '/myt/tours'
-      fullPath: '/myt/tours'
-      preLoaderRoute: typeof MytToursRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/team': {
-      id: '/myt/team'
-      path: '/myt/team'
-      fullPath: '/myt/team'
-      preLoaderRoute: typeof MytTeamRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/tcm': {
-      id: '/myt/tcm'
-      path: '/myt/tcm'
-      fullPath: '/myt/tcm'
-      preLoaderRoute: typeof MytTcmRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/settings': {
-      id: '/myt/settings'
-      path: '/myt/settings'
-      fullPath: '/myt/settings'
-      preLoaderRoute: typeof MytSettingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/score': {
-      id: '/myt/score'
-      path: '/myt/score'
-      fullPath: '/myt/score'
-      preLoaderRoute: typeof MytScoreRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/schedule': {
-      id: '/myt/schedule'
-      path: '/myt/schedule'
-      fullPath: '/myt/schedule'
-      preLoaderRoute: typeof MytScheduleRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/properties': {
-      id: '/myt/properties'
-      path: '/myt/properties'
-      fullPath: '/myt/properties'
-      preLoaderRoute: typeof MytPropertiesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/owners-compare': {
-      id: '/myt/owners-compare'
-      path: '/myt/owners-compare'
-      fullPath: '/myt/owners-compare'
-      preLoaderRoute: typeof MytOwnersCompareRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/mismatch': {
-      id: '/myt/mismatch'
-      path: '/myt/mismatch'
-      fullPath: '/myt/mismatch'
-      preLoaderRoute: typeof MytMismatchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/marketplace': {
-      id: '/myt/marketplace'
-      path: '/myt/marketplace'
-      fullPath: '/myt/marketplace'
-      preLoaderRoute: typeof MytMarketplaceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/leads': {
-      id: '/myt/leads'
-      path: '/myt/leads'
-      fullPath: '/myt/leads'
-      preLoaderRoute: typeof MytLeadsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/leaderboard': {
-      id: '/myt/leaderboard'
-      path: '/myt/leaderboard'
-      fullPath: '/myt/leaderboard'
-      preLoaderRoute: typeof MytLeaderboardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/inventory-feedback': {
-      id: '/myt/inventory-feedback'
-      path: '/myt/inventory-feedback'
-      fullPath: '/myt/inventory-feedback'
-      preLoaderRoute: typeof MytInventoryFeedbackRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/funnel': {
-      id: '/myt/funnel'
-      path: '/myt/funnel'
-      fullPath: '/myt/funnel'
-      preLoaderRoute: typeof MytFunnelRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/flow-ops': {
-      id: '/myt/flow-ops'
-      path: '/myt/flow-ops'
-      fullPath: '/myt/flow-ops'
-      preLoaderRoute: typeof MytFlowOpsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/drafts': {
-      id: '/myt/drafts'
-      path: '/myt/drafts'
-      fullPath: '/myt/drafts'
-      preLoaderRoute: typeof MytDraftsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/calendar': {
-      id: '/myt/calendar'
-      path: '/myt/calendar'
-      fullPath: '/myt/calendar'
-      preLoaderRoute: typeof MytCalendarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/myt/bookings': {
-      id: '/myt/bookings'
-      path: '/myt/bookings'
-      fullPath: '/myt/bookings'
-      preLoaderRoute: typeof MytBookingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/leads/add': {
-      id: '/leads/add'
-      path: '/add'
-      fullPath: '/leads/add'
-      preLoaderRoute: typeof LeadsAddRouteImport
-      parentRoute: typeof LeadsRoute
-    }
-    '/app/$': {
-      id: '/app/$'
-      path: '/app/$'
-      fullPath: '/app/$'
-      preLoaderRoute: typeof AppSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin/war-room': {
-      id: '/admin/war-room'
-      path: '/war-room'
-      fullPath: '/admin/war-room'
-      preLoaderRoute: typeof AdminWarRoomRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/visits': {
-      id: '/admin/visits'
-      path: '/visits'
-      fullPath: '/admin/visits'
-      preLoaderRoute: typeof AdminVisitsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/supreme': {
-      id: '/admin/supreme'
-      path: '/supreme'
-      fullPath: '/admin/supreme'
-      preLoaderRoute: typeof AdminSupremeRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/settings': {
-      id: '/admin/settings'
-      path: '/settings'
-      fullPath: '/admin/settings'
-      preLoaderRoute: typeof AdminSettingsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/property-bookings': {
-      id: '/admin/property-bookings'
-      path: '/property-bookings'
-      fullPath: '/admin/property-bookings'
-      preLoaderRoute: typeof AdminPropertyBookingsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/people': {
-      id: '/admin/people'
-      path: '/people'
-      fullPath: '/admin/people'
-      preLoaderRoute: typeof AdminPeopleRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/owners': {
-      id: '/admin/owners'
-      path: '/owners'
-      fullPath: '/admin/owners'
-      preLoaderRoute: typeof AdminOwnersRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/leads': {
-      id: '/admin/leads'
-      path: '/leads'
-      fullPath: '/admin/leads'
-      preLoaderRoute: typeof AdminLeadsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/intelligence': {
-      id: '/admin/intelligence'
-      path: '/intelligence'
-      fullPath: '/admin/intelligence'
-      preLoaderRoute: typeof AdminIntelligenceRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/exports': {
-      id: '/admin/exports'
-      path: '/exports'
-      fullPath: '/admin/exports'
-      preLoaderRoute: typeof AdminExportsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/command': {
-      id: '/admin/command'
-      path: '/command'
-      fullPath: '/admin/command'
-      preLoaderRoute: typeof AdminCommandRouteImport
+    '/admin/audit': {
+      id: '/admin/audit'
+      path: '/audit'
+      fullPath: '/admin/audit'
+      preLoaderRoute: typeof AdminAuditRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/calendar': {
@@ -1843,33 +1541,341 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminCalendarRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/admin/audit': {
-      id: '/admin/audit'
-      path: '/audit'
-      fullPath: '/admin/audit'
-      preLoaderRoute: typeof AdminAuditRouteImport
+    '/admin/command': {
+      id: '/admin/command'
+      path: '/command'
+      fullPath: '/admin/command'
+      preLoaderRoute: typeof AdminCommandRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/owner/media/$roomId': {
-      id: '/owner/media/$roomId'
-      path: '/owner/media/$roomId'
-      fullPath: '/owner/media/$roomId'
-      preLoaderRoute: typeof OwnerMediaRoomIdRouteImport
+    '/admin/exports': {
+      id: '/admin/exports'
+      path: '/exports'
+      fullPath: '/admin/exports'
+      preLoaderRoute: typeof AdminExportsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/intelligence': {
+      id: '/admin/intelligence'
+      path: '/intelligence'
+      fullPath: '/admin/intelligence'
+      preLoaderRoute: typeof AdminIntelligenceRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/leads': {
+      id: '/admin/leads'
+      path: '/leads'
+      fullPath: '/admin/leads'
+      preLoaderRoute: typeof AdminLeadsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/owners': {
+      id: '/admin/owners'
+      path: '/owners'
+      fullPath: '/admin/owners'
+      preLoaderRoute: typeof AdminOwnersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/people': {
+      id: '/admin/people'
+      path: '/people'
+      fullPath: '/admin/people'
+      preLoaderRoute: typeof AdminPeopleRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/property-bookings': {
+      id: '/admin/property-bookings'
+      path: '/property-bookings'
+      fullPath: '/admin/property-bookings'
+      preLoaderRoute: typeof AdminPropertyBookingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/supreme': {
+      id: '/admin/supreme'
+      path: '/supreme'
+      fullPath: '/admin/supreme'
+      preLoaderRoute: typeof AdminSupremeRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/visits': {
+      id: '/admin/visits'
+      path: '/visits'
+      fullPath: '/admin/visits'
+      preLoaderRoute: typeof AdminVisitsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/war-room': {
+      id: '/admin/war-room'
+      path: '/war-room'
+      fullPath: '/admin/war-room'
+      preLoaderRoute: typeof AdminWarRoomRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/app/$': {
+      id: '/app/$'
+      path: '/app/$'
+      fullPath: '/app/$'
+      preLoaderRoute: typeof AppSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/myt/tour/$id': {
-      id: '/myt/tour/$id'
-      path: '/myt/tour/$id'
-      fullPath: '/myt/tour/$id'
-      preLoaderRoute: typeof MytTourIdRouteImport
+    '/leads/add': {
+      id: '/leads/add'
+      path: '/add'
+      fullPath: '/leads/add'
+      preLoaderRoute: typeof LeadsAddRouteImport
+      parentRoute: typeof LeadsRoute
+    }
+    '/myt/': {
+      id: '/myt/'
+      path: '/myt'
+      fullPath: '/myt/'
+      preLoaderRoute: typeof MytIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/myt/tcm/performance': {
-      id: '/myt/tcm/performance'
-      path: '/performance'
-      fullPath: '/myt/tcm/performance'
-      preLoaderRoute: typeof MytTcmPerformanceRouteImport
-      parentRoute: typeof MytTcmRoute
+    '/myt/bookings': {
+      id: '/myt/bookings'
+      path: '/myt/bookings'
+      fullPath: '/myt/bookings'
+      preLoaderRoute: typeof MytBookingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/calendar': {
+      id: '/myt/calendar'
+      path: '/myt/calendar'
+      fullPath: '/myt/calendar'
+      preLoaderRoute: typeof MytCalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/drafts': {
+      id: '/myt/drafts'
+      path: '/myt/drafts'
+      fullPath: '/myt/drafts'
+      preLoaderRoute: typeof MytDraftsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/flow-ops': {
+      id: '/myt/flow-ops'
+      path: '/myt/flow-ops'
+      fullPath: '/myt/flow-ops'
+      preLoaderRoute: typeof MytFlowOpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/funnel': {
+      id: '/myt/funnel'
+      path: '/myt/funnel'
+      fullPath: '/myt/funnel'
+      preLoaderRoute: typeof MytFunnelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/inventory-feedback': {
+      id: '/myt/inventory-feedback'
+      path: '/myt/inventory-feedback'
+      fullPath: '/myt/inventory-feedback'
+      preLoaderRoute: typeof MytInventoryFeedbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/leaderboard': {
+      id: '/myt/leaderboard'
+      path: '/myt/leaderboard'
+      fullPath: '/myt/leaderboard'
+      preLoaderRoute: typeof MytLeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/leads': {
+      id: '/myt/leads'
+      path: '/myt/leads'
+      fullPath: '/myt/leads'
+      preLoaderRoute: typeof MytLeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/marketplace': {
+      id: '/myt/marketplace'
+      path: '/myt/marketplace'
+      fullPath: '/myt/marketplace'
+      preLoaderRoute: typeof MytMarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/mismatch': {
+      id: '/myt/mismatch'
+      path: '/myt/mismatch'
+      fullPath: '/myt/mismatch'
+      preLoaderRoute: typeof MytMismatchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/owners-compare': {
+      id: '/myt/owners-compare'
+      path: '/myt/owners-compare'
+      fullPath: '/myt/owners-compare'
+      preLoaderRoute: typeof MytOwnersCompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/properties': {
+      id: '/myt/properties'
+      path: '/myt/properties'
+      fullPath: '/myt/properties'
+      preLoaderRoute: typeof MytPropertiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/schedule': {
+      id: '/myt/schedule'
+      path: '/myt/schedule'
+      fullPath: '/myt/schedule'
+      preLoaderRoute: typeof MytScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/score': {
+      id: '/myt/score'
+      path: '/myt/score'
+      fullPath: '/myt/score'
+      preLoaderRoute: typeof MytScoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/settings': {
+      id: '/myt/settings'
+      path: '/myt/settings'
+      fullPath: '/myt/settings'
+      preLoaderRoute: typeof MytSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/tcm': {
+      id: '/myt/tcm'
+      path: '/myt/tcm'
+      fullPath: '/myt/tcm'
+      preLoaderRoute: typeof MytTcmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/team': {
+      id: '/myt/team'
+      path: '/myt/team'
+      fullPath: '/myt/team'
+      preLoaderRoute: typeof MytTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/tours': {
+      id: '/myt/tours'
+      path: '/myt/tours'
+      fullPath: '/myt/tours'
+      preLoaderRoute: typeof MytToursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/war-room': {
+      id: '/myt/war-room'
+      path: '/myt/war-room'
+      fullPath: '/myt/war-room'
+      preLoaderRoute: typeof MytWarRoomRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/zones': {
+      id: '/myt/zones'
+      path: '/myt/zones'
+      fullPath: '/myt/zones'
+      preLoaderRoute: typeof MytZonesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owner/': {
+      id: '/owner/'
+      path: '/owner'
+      fullPath: '/owner/'
+      preLoaderRoute: typeof OwnerIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owner/blocks': {
+      id: '/owner/blocks'
+      path: '/owner/blocks'
+      fullPath: '/owner/blocks'
+      preLoaderRoute: typeof OwnerBlocksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owner/booking-approvals': {
+      id: '/owner/booking-approvals'
+      path: '/owner/booking-approvals'
+      fullPath: '/owner/booking-approvals'
+      preLoaderRoute: typeof OwnerBookingApprovalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owner/hub': {
+      id: '/owner/hub'
+      path: '/owner/hub'
+      fullPath: '/owner/hub'
+      preLoaderRoute: typeof OwnerHubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owner/insights': {
+      id: '/owner/insights'
+      path: '/owner/insights'
+      fullPath: '/owner/insights'
+      preLoaderRoute: typeof OwnerInsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owner/inventory': {
+      id: '/owner/inventory'
+      path: '/owner/inventory'
+      fullPath: '/owner/inventory'
+      preLoaderRoute: typeof OwnerInventoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owner/registry': {
+      id: '/owner/registry'
+      path: '/owner/registry'
+      fullPath: '/owner/registry'
+      preLoaderRoute: typeof OwnerRegistryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owner/rooms': {
+      id: '/owner/rooms'
+      path: '/owner/rooms'
+      fullPath: '/owner/rooms'
+      preLoaderRoute: typeof OwnerRoomsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owner/visits': {
+      id: '/owner/visits'
+      path: '/owner/visits'
+      fullPath: '/owner/visits'
+      preLoaderRoute: typeof OwnerVisitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/supply-hub/': {
+      id: '/supply-hub/'
+      path: '/supply-hub'
+      fullPath: '/supply-hub/'
+      preLoaderRoute: typeof SupplyHubIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/supply-hub/$id': {
+      id: '/supply-hub/$id'
+      path: '/supply-hub/$id'
+      fullPath: '/supply-hub/$id'
+      preLoaderRoute: typeof SupplyHubIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/supply-hub/areas': {
+      id: '/supply-hub/areas'
+      path: '/supply-hub/areas'
+      fullPath: '/supply-hub/areas'
+      preLoaderRoute: typeof SupplyHubAreasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/supply-hub/match': {
+      id: '/supply-hub/match'
+      path: '/supply-hub/match'
+      fullPath: '/supply-hub/match'
+      preLoaderRoute: typeof SupplyHubMatchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myt/feedback/$id': {
+      id: '/myt/feedback/$id'
+      path: '/myt/feedback/$id'
+      fullPath: '/myt/feedback/$id'
+      preLoaderRoute: typeof MytFeedbackIdRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/myt/tcm/actions': {
       id: '/myt/tcm/actions'
@@ -1878,11 +1884,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MytTcmActionsRouteImport
       parentRoute: typeof MytTcmRoute
     }
-    '/myt/feedback/$id': {
-      id: '/myt/feedback/$id'
-      path: '/myt/feedback/$id'
-      fullPath: '/myt/feedback/$id'
-      preLoaderRoute: typeof MytFeedbackIdRouteImport
+    '/myt/tcm/performance': {
+      id: '/myt/tcm/performance'
+      path: '/performance'
+      fullPath: '/myt/tcm/performance'
+      preLoaderRoute: typeof MytTcmPerformanceRouteImport
+      parentRoute: typeof MytTcmRoute
+    }
+    '/myt/tour/$id': {
+      id: '/myt/tour/$id'
+      path: '/myt/tour/$id'
+      fullPath: '/myt/tour/$id'
+      preLoaderRoute: typeof MytTourIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owner/media/$roomId': {
+      id: '/owner/media/$roomId'
+      path: '/owner/media/$roomId'
+      fullPath: '/owner/media/$roomId'
+      preLoaderRoute: typeof OwnerMediaRoomIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/myt/tour/$id/report': {
@@ -1974,6 +1994,7 @@ const rootRouteChildren: RootRouteChildren = {
   CalendarRoute: CalendarRoute,
   CheckinsRoute: CheckinsRoute,
   CoachRoute: CoachRoute,
+  DashboardDailyRoute: DashboardDailyRoute,
   DemoLoadRoute: DemoLoadRoute,
   EasyRoute: EasyRoute,
   ExecutionRoute: ExecutionRoute,
