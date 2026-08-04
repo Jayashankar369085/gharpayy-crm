@@ -163,10 +163,35 @@ function LeadsPage() {
                         <div>{l.preferredArea}</div>
                         <div className="text-muted-foreground">₹{(l.budget / 1000).toFixed(0)}k</div>
                       </div>
-                      <div className="col-span-2 text-xs">
-                        <div>{tcm?.name ?? "—"}</div>
-                        <div className="text-muted-foreground">{tcm?.zone ?? "—"}</div>
-                      </div>
+                      <div className="col-span-2">
+  <Select
+    value={l.assignedTcmId ?? ""}
+    onValueChange={async (value) => {
+      try {
+        await apiClient.updateLead(l.id, {
+          assignedTcmId: value,
+        });
+
+        await loadLeadsFromAPI();
+        toast.success("TCM updated");
+      } catch {
+        toast.error("Failed to update TCM");
+      }
+    }}
+  >
+    <SelectTrigger className="h-8 w-40">
+      <SelectValue placeholder="Assign TCM" />
+    </SelectTrigger>
+
+    <SelectContent>
+      {tcms.map((t) => (
+        <SelectItem key={t.id} value={t.id}>
+          {t.name}
+        </SelectItem>
+      ))}
+    </SelectContent>
+  </Select>
+</div>
                       <div className="col-span-1 text-right text-[11px] text-muted-foreground">
                         {mounted ? formatDistanceToNow(new Date(l.updatedAt), { addSuffix: true }) : "—"}
                       </div>
