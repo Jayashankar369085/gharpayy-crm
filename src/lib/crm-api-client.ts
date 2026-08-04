@@ -267,3 +267,18 @@ export async function checkHealth() {
     return false;
   }
 }
+export async function updateLead(id: string, data: any) {
+  const response = await fetch(`${API_BASE}/leads/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to update lead");
+  }
+
+  return response.json();
+}
