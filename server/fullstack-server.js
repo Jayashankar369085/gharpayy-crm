@@ -148,7 +148,18 @@ app.get('/api/health', (req, res) => {
  */
 app.post('/api/leads', async (req, res) => {
   try {
-    const { name, phone, email, source, budget, moveInDate, preferredArea, assignedTcmId } = req.body;
+    const {
+  name,
+  phone,
+  email,
+  source,
+  budget,
+  moveInDate,
+  preferredArea,
+  assignedTcmId: requestAssignedTcmId
+} = req.body;
+
+const assignedTcmId = requestAssignedTcmId || "tcm-537f2c69";
 
     // Validate phone/email format
     if (!phone || !/^\d{10}$/.test(phone.replace(/\D/g, ''))) {
@@ -199,7 +210,15 @@ app.post('/api/leads', async (req, res) => {
  */
 app.get('/api/leads', async (req, res) => {
   try {
-    const leads = await dbAll('SELECT * FROM leads ORDER BY createdAt DESC');
+    const leads = await dbAll(`
+SELECT
+    l.*,
+    t.name AS assignedTcmName
+FROM leads l
+LEFT JOIN tcms t
+ON l.assignedTcmId = t.id
+ORDER BY l.createdAt DESC
+`);
     res.json(leads);
   } catch (error) {
     res.status(500).json({ error: error.message });
